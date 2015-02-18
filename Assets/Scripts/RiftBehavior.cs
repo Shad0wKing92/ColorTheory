@@ -1,0 +1,30 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class RiftBehavior : MonoBehaviour {
+
+	RiftManagerScript RMS;
+
+	// Use this for initialization
+	void Start () {
+		RMS = GameObject.FindGameObjectWithTag("RiftManager").GetComponent<RiftManagerScript>();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if(RMS.currentRift == RiftManagerScript.rifts.normal)
+			this.gameObject.renderer.material.color = Color.gray;
+		if(RMS.currentRift == RiftManagerScript.rifts.red)
+			this.gameObject.renderer.material.color = Color.red;
+		if(RMS.currentRift == RiftManagerScript.rifts.orange)
+			this.gameObject.renderer.material.color = Color.black;
+		if(RMS.currentRift == RiftManagerScript.rifts.yellow)
+			this.gameObject.renderer.material.color = Color.yellow;
+		if(RMS.currentRift == RiftManagerScript.rifts.green)
+			this.gameObject.renderer.material.color = Color.green;
+		if(RMS.currentRift == RiftManagerScript.rifts.blue)
+			this.gameObject.renderer.material.color = Color.blue;
+		if(RMS.currentRift == RiftManagerScript.rifts.purple)
+			this.gameObject.renderer.material.color = Color.magenta;
+	}
+}
