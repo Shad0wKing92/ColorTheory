@@ -24,8 +24,12 @@ public class KillZone : MonoBehaviour {
 			}
 		}
 		if(other.gameObject.tag == "Player"){
+//			Destroy(other.gameObject.rigidbody2D);
+			other.rigidbody.velocity = new Vector2(0,0);
 			other.transform.position = RS.transform.position;
 			other.transform.rotation = RS.transform.rotation;
+//			other.gameObject.AddComponent<Rigidbody2D>();
+//			other.transform.rotation = RS.transform.rotation;
 		}
 
 	}
