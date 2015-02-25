@@ -18,10 +18,13 @@ public class KillZone : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other){
 		if(other.gameObject.tag == "Grabbable"){
-			if(RS.GrabbableInFeild){
-				Destroy (other.gameObject);
-				RS.GrabbableInFeild = false;
-			}
+//			if(RS.GrabbableInFeild){
+				//Destroy (other.gameObject);
+			other.rigidbody.velocity = new Vector2(0,0);
+			other.transform.position = RS.grabbable.transform.position;
+			other.transform.rotation = RS.grabbable.transform.rotation;
+//			RS.GrabbableInFeild = false;
+//			}
 		}
 		if(other.gameObject.tag == "Player"){
 //			Destroy(other.gameObject.rigidbody2D);

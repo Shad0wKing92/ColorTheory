@@ -12,7 +12,7 @@ public class ButtonScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print (_active);
+
 	}
 
 	void OnCollisionEnter2D(Collision2D other){

@@ -28,36 +28,28 @@ public class MovementScript : MonoBehaviour {
 			//check if object is on ground (see GroundBehavior)
 			if(GB.grounded){
 				rigidbody2D.AddForce(Vector2.up * force);
-//				if(grabbable != null)
-//					grabbable.rigidbody2D.AddForce(Vector2.up * force);
 			}
 		}
 		//move player right
 		if (Input.GetKey (KMS.right)) {
 			rigidbody2D.AddForce (Vector2.right * speed);
-//			if(grabbable != null)
-//				grabbable.rigidbody2D.AddForce(Vector2.right * speed);
 		}
 		//move player left
 		if (Input.GetKey (KMS.left)) {
 			rigidbody2D.AddForce (-Vector2.right * speed);
-//			if(grabbable != null)
-//				grabbable.rigidbody2D.AddForce(-Vector2.right * speed);
 		}
 		if (Input.GetKeyDown (KMS.grab)) {
-			print("grabbing");
 			grabbing=true;
 		}
 		if (Input.GetKeyUp (KMS.grab)) {
-			print("not grabbing");
 			grabbing=false;
 			AddRigidbody();
 		}
 
 
-		//make player grab cubes or whatever
-	}
 
+	}
+	//make player grab cubes or whatever
 	void OnCollisionStay2D(Collision2D other){
 		if(grabbing){
 			if (other.gameObject.tag == "Grabbable") {			

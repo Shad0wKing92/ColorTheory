@@ -20,13 +20,13 @@ public class RespawnScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!GrabbableInFeild && spawnerType == spawner.grabbable) {
-			Instantiate(grabbable, transform.position, transform.rotation);
-			GrabbableInFeild=true;
-		}
-		if (!PlayerInFeild && spawnerType == spawner.player) {
-			Instantiate(Player, transform.position, transform.rotation);
-			PlayerInFeild=true;
-		}
+//		if (!GrabbableInFeild && spawnerType == spawner.grabbable) {
+//			Instantiate(grabbable, transform.position, transform.rotation);
+//			GrabbableInFeild=true;
+//		}
+//		if (!PlayerInFeild && spawnerType == spawner.player) {
+//			Instantiate(Player, transform.position, transform.rotation);
+//			PlayerInFeild=true;
+//		}
 	}
 }
