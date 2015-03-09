@@ -34,6 +34,17 @@ public class KillZone : MonoBehaviour {
 //			other.gameObject.AddComponent<Rigidbody2D>();
 //			other.transform.rotation = RS.transform.rotation;
 		}
+	}
 
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.gameObject.tag == "Player") {
+			other.rigidbody2D.velocity = new Vector2 (0, 0);
+			other.transform.position = RS.transform.position;
+			other.transform.rotation = RS.transform.rotation;
+		} else if (other.gameObject.tag == "Grabbable") {
+			other.rigidbody2D.velocity = new Vector2 (0, 0);
+			other.transform.position = RS.grabbable.transform.position;
+			other.transform.rotation = RS.grabbable.transform.rotation;
+		}
 	}
 }
