@@ -27,6 +27,8 @@ public class MovementScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		print (GB.grounded);
+
 		//make player jump
 		if(Input.GetKeyDown(KMS.jump)){
 			//check if object is on ground (see GroundBehavior)
@@ -43,14 +45,17 @@ public class MovementScript : MonoBehaviour {
 				SlowWorld();
 			}
 		}
-		if (Input.GetKeyUp (KMS.power)) {
-			powerActive=false;
-			//else/* if(!powerActive)*/{
-				Time.timeScale = 1;
+		if(!powerActive){
+			Time.timeScale = 1;
 			force = 400;
 			speed = 10;
-			//}
+			rigidbody2D.drag = 0.2f;
 		}
+		print (powerActive);
+		print (Time.timeScale);
+//		if (Input.GetKeyUp (KMS.power)) {
+//			powerActive=false;
+//		}
 		//move player right
 		if (Input.GetKey (KMS.right)) {
 			rigidbody2D.AddForce (Vector2.right * speed);
@@ -110,13 +115,20 @@ public class MovementScript : MonoBehaviour {
 			count = 4;
 		}
 	}
+
+	IEnumerator PowerSpeed(float time){
+		yield return new WaitForSeconds (time);
+		powerActive = false;
+	}
 	//Color Blue Power
 	void SlowWorld(){
 		if (powerActive) {
 			Time.timeScale = 0.5f;
 			speed = speed * 2;
 			force = force * 2;
-			//add Coroutine
+			rigidbody2D.drag = rigidbody2D.drag * 2;
+			StartCoroutine(PowerSpeed(2f));
+
 		}
 	}
 }
