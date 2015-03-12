@@ -17,16 +17,16 @@ public class EventManager : MonoBehaviour {
 	
 	}
 
-	void OnGUI(){
-		if (GUI.Button (new Rect (5, 5, 150, 40), "Power UP")) {
-			if(Handle != null){
-				Handle(true);
-			}
-		}
-		if (GUI.Button (new Rect (5, 50, 150, 40), "Power Down")) {
-			if(Handle != null){
-				Handle(false);
-			}
-		}
-	}
+//	void OnGUI(){
+//		if (GUI.Button (new Rect (5, 5, 150, 40), "Power UP")) {
+//			if(Handle != null){
+//				Handle(true);
+//			}
+//		}
+//		if (GUI.Button (new Rect (5, 50, 150, 40), "Power Down")) {
+//			if(Handle != null){
+//				Handle(false);
+//			}
+//		}
+//	}
 }

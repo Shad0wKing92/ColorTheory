@@ -27,12 +27,12 @@ public class MovementScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print (GB.grounded);
+
 
 		//make player jump
 		if(Input.GetKeyDown(KMS.jump)){
 			//check if object is on ground (see GroundBehavior)
-			if(GB.grounded && RMS.currentRift != RiftManagerScript.rifts.yellow){
+			if(GB.grounded){
 				rigidbody2D.AddForce(Vector2.up * force);
 			}
 		}
@@ -51,8 +51,8 @@ public class MovementScript : MonoBehaviour {
 			speed = 10;
 			rigidbody2D.drag = 0.2f;
 		}
-		print (powerActive);
-		print (Time.timeScale);
+		//print (powerActive);
+		//print (Time.timeScale);
 //		if (Input.GetKeyUp (KMS.power)) {
 //			powerActive=false;
 //		}
@@ -111,7 +111,7 @@ public class MovementScript : MonoBehaviour {
 		}else if(count == 0){
 			rigidbody2D.AddForce(Vector2.up * 0);
 		}
-		if(GB.grounded == true){
+		if(GB.grounded){
 			count = 4;
 		}
 	}
