@@ -4,7 +4,6 @@ using System.Collections;
 public class MovementScript : MonoBehaviour {
 
 	KeyManagerScript KMS;
-	GroundBehavior GB;
 	RiftManagerScript RMS;
 	public float force;
 	public float speed;
@@ -12,13 +11,13 @@ public class MovementScript : MonoBehaviour {
 	GameObject grabbable;
 	bool grabbing;
 	int count = 4;
-	bool powerActive;
+	[HideInInspector]public bool powerActive;
+	[HideInInspector]public bool grounded;
 
 	// Use this for initialization
 	void Start () {
 		//find the scripts for the components
 		KMS = GameObject.FindGameObjectWithTag ("KeyManager").GetComponent<KeyManagerScript> ();
-		GB = GameObject.FindGameObjectWithTag ("Ground").GetComponent<GroundBehavior> ();
 		RMS = GameObject.FindGameObjectWithTag("RiftManager").GetComponent<RiftManagerScript>();
 		grabbed = false;
 		grabbable = null;
@@ -32,8 +31,12 @@ public class MovementScript : MonoBehaviour {
 		//make player jump
 		if(Input.GetKeyDown(KMS.jump)){
 			//check if object is on ground (see GroundBehavior)
-			if(GB.grounded){
-				rigidbody2D.AddForce(Vector2.up * force);
+			if(grounded){
+				if(RMS.currentRift == RiftManagerScript.rifts.red && powerActive){
+					rigidbody2D.AddForce(-Vector2.up * force);
+				}else{
+					rigidbody2D.AddForce(Vector2.up * force);
+				}
 			}
 		}
 		if (Input.GetKeyDown (KMS.power)) {
@@ -44,18 +47,18 @@ public class MovementScript : MonoBehaviour {
 				powerActive = true;
 				SlowWorld();
 			}
+			if(RMS.currentRift == RiftManagerScript.rifts.red){
+				powerActive = true;
+				GravitySwitch();
+			}
 		}
 		if(!powerActive){
 			Time.timeScale = 1;
 			force = 400;
 			speed = 10;
 			rigidbody2D.drag = 0.2f;
+			rigidbody2D.gravityScale = 1;
 		}
-		//print (powerActive);
-		//print (Time.timeScale);
-//		if (Input.GetKeyUp (KMS.power)) {
-//			powerActive=false;
-//		}
 		//move player right
 		if (Input.GetKey (KMS.right)) {
 			rigidbody2D.AddForce (Vector2.right * speed);
@@ -111,7 +114,7 @@ public class MovementScript : MonoBehaviour {
 		}else if(count == 0){
 			rigidbody2D.AddForce(Vector2.up * 0);
 		}
-		if(GB.grounded){
+		if(grounded){
 			count = 4;
 		}
 	}
@@ -129,6 +132,24 @@ public class MovementScript : MonoBehaviour {
 			rigidbody2D.drag = rigidbody2D.drag * 2;
 			StartCoroutine(PowerSpeed(2f));
 
+		}
+	}
+
+	void GravitySwitch(){
+		if (powerActive) {
+			this.rigidbody2D.gravityScale = -1f;
+			StartCoroutine(PowerSpeed(6f));
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.gameObject.tag == "Ground") {
+			grounded = true;
+		}
+	}
+	void OnTriggerExit2D(Collider2D other){
+		if (other.gameObject.tag == "Ground") {
+			grounded = false;
 		}
 	}
 }

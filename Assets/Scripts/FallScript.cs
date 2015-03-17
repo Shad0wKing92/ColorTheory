@@ -17,6 +17,7 @@ public class FallScript : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "Player") {
+			print("fall");
 			child.gameObject.AddComponent<Rigidbody2D>();
 		}
 	}

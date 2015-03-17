@@ -42,16 +42,16 @@ public class ZoneChange : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "Player") {
-//			if (RMS.currentRift == RiftManagerScript.rifts.red)
-//				RMS.currentRift = RiftManagerScript.rifts.yellow;
+			if (RMS.currentRift == RiftManagerScript.rifts.red)
+				RMS.currentRift = RiftManagerScript.rifts.yellow;
 //			else if (RMS.currentRift == RiftManagerScript.rifts.orange)
 //				RMS.currentRift = RiftManagerScript.rifts.yellow;
-			if (RMS.currentRift == RiftManagerScript.rifts.yellow)
+			else if (RMS.currentRift == RiftManagerScript.rifts.yellow)
 				RMS.currentRift = RiftManagerScript.rifts.blue;
 //			else if (RMS.currentRift == RiftManagerScript.rifts.green)
 //				RMS.currentRift = RiftManagerScript.rifts.blue;
 			else if (RMS.currentRift == RiftManagerScript.rifts.blue)
-				RMS.currentRift = RiftManagerScript.rifts.yellow;
+				RMS.currentRift = RiftManagerScript.rifts.red;
 //			else if (RMS.currentRift == RiftManagerScript.rifts.purple)
 //				RMS.currentRift = RiftManagerScript.rifts.red;
 //			} else if (RMS.currentRift == RiftManagerScript.rifts.old && currentRift == rifts.knew) {
