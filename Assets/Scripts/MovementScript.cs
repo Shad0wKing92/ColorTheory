@@ -26,7 +26,7 @@ public class MovementScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		print (grounded);
 
 		//make player jump
 		if(Input.GetKeyDown(KMS.jump)){
@@ -142,12 +142,12 @@ public class MovementScript : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D other){
+	void OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.tag == "Ground") {
 			grounded = true;
 		}
 	}
-	void OnTriggerExit2D(Collider2D other){
+	void OnCollisionExit2D(Collision2D other){
 		if (other.gameObject.tag == "Ground") {
 			grounded = false;
 		}
