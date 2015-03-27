@@ -26,7 +26,7 @@ public class MovementScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print (grounded);
+		print (Time.timeScale);
 
 		//make player jump
 		if(Input.GetKeyDown(KMS.jump)){
@@ -78,6 +78,10 @@ public class MovementScript : MonoBehaviour {
 
 	//make player grab cubes or whatever
 	void OnCollisionStay2D(Collision2D other){
+		if (other.gameObject.tag == "Ground") {
+			grounded = true;
+		}
+
 		if(grabbing){
 			if (other.gameObject.tag == "Grabbable") {			
 				other.transform.parent = this.transform;
@@ -127,9 +131,9 @@ public class MovementScript : MonoBehaviour {
 	void SlowWorld(){
 		if (powerActive) {
 			Time.timeScale = 0.5f;
-			speed = speed * 2;
-			force = force * 2;
-			rigidbody2D.drag = rigidbody2D.drag * 2;
+			speed = 14f;
+//			force = force * 2;
+//			rigidbody2D.drag = rigidbody2D.drag * 2;
 			StartCoroutine(PowerSpeed(2f));
 
 		}
@@ -142,11 +146,11 @@ public class MovementScript : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D other){
-		if (other.gameObject.tag == "Ground") {
-			grounded = true;
-		}
-	}
+//	void OnCollisionEnter2D(Collision2D other){
+//		if (other.gameObject.tag == "Ground") {
+//			grounded = true;
+//		}
+//	}
 	void OnCollisionExit2D(Collision2D other){
 		if (other.gameObject.tag == "Ground") {
 			grounded = false;
