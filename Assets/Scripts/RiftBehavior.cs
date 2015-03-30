@@ -26,5 +26,17 @@ public class RiftBehavior : MonoBehaviour {
 			this.gameObject.renderer.material.color = Color.blue;
 		if(RMS.currentRift == RiftManagerScript.rifts.purple)
 			this.gameObject.renderer.material.color = Color.magenta;
+		
+		if(this.gameObject.tag == "Player"){
+			if (RMS.currentRift == RiftManagerScript.rifts.red) {
+				this.gameObject.layer = 11;
+			}
+			if (RMS.currentRift == RiftManagerScript.rifts.yellow) {
+				this.gameObject.layer = 12;
+			}
+			if (RMS.currentRift == RiftManagerScript.rifts.blue) {
+				this.gameObject.layer = 13;
+			}
+		}
 	}
 }
