@@ -26,7 +26,7 @@ public class MovementScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print (Time.timeScale);
+		
 
 		//make player jump
 		if(Input.GetKeyDown(KMS.jump)){
