@@ -38,5 +38,17 @@ public class RiftBehavior : MonoBehaviour {
 				this.gameObject.layer = 13;
 			}
 		}
+
+		if(this.gameObject.tag == "Cube"){
+			if (RMS.currentRift == RiftManagerScript.rifts.red) {
+				this.gameObject.layer = 14;
+			}
+			if (RMS.currentRift == RiftManagerScript.rifts.yellow) {
+				this.gameObject.layer = 15;
+			}
+			if (RMS.currentRift == RiftManagerScript.rifts.blue) {
+				this.gameObject.layer = 16;
+			}
+		}
 	}
 }
