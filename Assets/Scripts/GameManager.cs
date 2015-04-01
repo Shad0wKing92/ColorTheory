@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour {
 	
 	}
 
+	void OnGUI(){
+		GUI.Label (new Rect (10, 10, 150, 150), ("Player Lives: " + PlayerLives));
+	}
+
 	public void RemoveFromLives(){
 		PlayerLives--;
 	}
