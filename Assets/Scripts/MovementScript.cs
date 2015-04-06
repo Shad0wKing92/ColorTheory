@@ -57,7 +57,7 @@ public class MovementScript : MonoBehaviour {
 		if(!powerActive){
 			Time.timeScale = 1;
 			force = 400;
-			speed = 15f;
+			speed = 10f;
 			rigidbody2D.drag = 0.2f;
 			rigidbody2D.gravityScale = 1;
 		}
@@ -133,7 +133,7 @@ public class MovementScript : MonoBehaviour {
 	void SlowWorld(){
 		if (powerActive) {
 			Time.timeScale = 0.5f;
-			speed = 18f;
+			speed = 14f;
 //			force = force * 2;
 //			rigidbody2D.drag = rigidbody2D.drag * 2;
 			StartCoroutine(PowerSpeed(2f));
