@@ -57,8 +57,8 @@ public class MovementScript : MonoBehaviour {
 		if(!powerActive){
 			Time.timeScale = 1;
 			force = 400;
-			speed = 10f;
-			rigidbody2D.drag = 0.2f;
+//			speed = 10f;
+//			rigidbody2D.drag = 0.2f;
 			rigidbody2D.gravityScale = 1;
 		}
 		//move player right

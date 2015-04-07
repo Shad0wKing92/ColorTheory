@@ -4,7 +4,23 @@ using System.Collections;
 public class GameManager : MonoBehaviour {
 
 	public int PlayerLives;
+	public int CurrentLevel;
 
+	static private GameManager instance;
+	
+	static public GameManager Instance{
+		get{ return instance;}
+	}
+	
+	void Awake () {
+		if(instance != null && instance != this){
+			Destroy (gameObject);
+		}else{
+			instance = this;
+		}
+		
+		DontDestroyOnLoad (gameObject);
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -22,5 +38,9 @@ public class GameManager : MonoBehaviour {
 
 	public void RemoveFromLives(){
 		PlayerLives--;
+	}
+
+	public void AddToLevel(){
+		CurrentLevel++;
 	}
 }
