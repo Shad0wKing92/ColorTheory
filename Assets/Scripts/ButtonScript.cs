@@ -5,8 +5,11 @@ public class ButtonScript : MonoBehaviour {
 
 	[HideInInspector]public bool _active;
 
+	SoundManager SM;
+
 	// Use this for initialization
 	void Start () {
+		SM = GameObject.FindGameObjectWithTag ("SoundManager").GetComponent<SoundManager> ();
 		_active = false;
 	}
 	
@@ -18,6 +21,7 @@ public class ButtonScript : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other){
 		if(other.gameObject.tag == ("Grabbable")){
 			_active = true;
+			SM.testChildObject.audio.Play();
 		}
 	}
 

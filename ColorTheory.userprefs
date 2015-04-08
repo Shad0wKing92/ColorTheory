@@ -1,16 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MovementScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SoundManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameManager.cs" Line="44" Column="18" />
-      <File FileName="Assets\Scripts\RiftBehavior.cs" Line="55" Column="1" />
-      <File FileName="Assets\Scripts\KillZone.cs" Line="55" Column="1" />
-      <File FileName="Assets\Scripts\DoorScript.cs" Line="35" Column="21" />
-      <File FileName="Assets\Scripts\MovementScript.cs" Line="61" Column="15" />
-      <File FileName="Assets\Scripts\DoorSwitch.cs" Line="24" Column="1" />
-      <File FileName="Assets\Scripts\Rotate.cs" Line="31" Column="1" />
-      <File FileName="Assets\Shaders\WaterPanning.shader" Line="40" Column="2" />
-      <File FileName="Assets\Shaders\MineCraft_Vertex.shader" Line="56" Column="2" />
+      <File FileName="Assets\Scripts\SoundManager.cs" Line="38" Column="3" />
+      <File FileName="Assets\Scripts\MovementScript.cs" Line="29" Column="7" />
+      <File FileName="Assets\Scripts\ButtonScript.cs" Line="12" Column="88" />
+      <File FileName="c:\Users\jacob.berry\Desktop\GitHub\ColorTheory\Assets\WallVisionOutlineEffect\WallVisionOutlineEffect.cs" Line="6" Column="40" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

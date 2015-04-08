@@ -7,6 +7,7 @@ public class MovementScript : MonoBehaviour {
 
 	KeyManagerScript KMS;
 	RiftManagerScript RMS;
+	SoundManager SM;
 	public float force;
 	public float speed;
 	bool grabbed;
@@ -21,9 +22,11 @@ public class MovementScript : MonoBehaviour {
 		//find the scripts for the components
 		KMS = GameObject.FindGameObjectWithTag ("KeyManager").GetComponent<KeyManagerScript> ();
 		RMS = GameObject.FindGameObjectWithTag("RiftManager").GetComponent<RiftManagerScript>();
+		SM = GameObject.FindGameObjectWithTag ("SoundManager").GetComponent<SoundManager> ();
 		grabbed = false;
 		grabbable = null;
 		grabbing = false;
+//		SM.BackgroundMusic.Play ();
 	}
 	
 	// Update is called once per frame
@@ -36,8 +39,10 @@ public class MovementScript : MonoBehaviour {
 			if(grounded){
 				if(RMS.currentRift == RiftManagerScript.rifts.red && powerActive){
 					rigidbody2D.AddForce(-Vector2.up * force);
+//					SM.jump.Play();
 				}else{
 					rigidbody2D.AddForce(Vector2.up * force);
+//					SM.jump.Play();
 				}
 			}
 		}
@@ -108,15 +113,19 @@ public class MovementScript : MonoBehaviour {
 		if(count == 4){
 			rigidbody2D.AddForce(Vector2.up * (0.8f * force));
 			count--;
+//			SM.YellowPower.Play();
 		}else if(count == 3){
 			rigidbody2D.AddForce(Vector2.up * (0.6f * force));
 			count--;
+//			SM.YellowPower.Play();
 		}else if(count == 2){
 			rigidbody2D.AddForce(Vector2.up * (0.4f * force));
 			count--;
+//			SM.YellowPower.Play();
 		}else if(count == 1){
 			rigidbody2D.AddForce(Vector2.up * (0.2f * force));
 			count--;
+//			SM.YellowPower.Play();
 		}else if(count == 0){
 			rigidbody2D.AddForce(Vector2.up * 0);
 		}
@@ -137,7 +146,6 @@ public class MovementScript : MonoBehaviour {
 //			force = force * 2;
 //			rigidbody2D.drag = rigidbody2D.drag * 2;
 			StartCoroutine(PowerSpeed(2f));
-
 		}
 	}
 
@@ -145,6 +153,7 @@ public class MovementScript : MonoBehaviour {
 		if (powerActive) {
 			this.rigidbody2D.gravityScale = -1f;
 			StartCoroutine(PowerSpeed(6f));
+			//SM.RedPower.Play();
 		}
 	}
 
