@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
 		PlayerLives--;
 	}
 
-	public void AddToLevel(){
-		CurrentLevel++;
-	}
+//	public void AddToLevel(){
+//		CurrentLevel++;
+//	}
 }

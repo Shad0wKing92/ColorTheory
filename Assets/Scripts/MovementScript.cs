@@ -31,56 +31,54 @@ public class MovementScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(Time.timeScale != 0){
 
-		//make player jump
-		if(Input.GetKeyDown(KMS.jump)){
-			//check if object is on ground (see GroundBehavior)
-			if(grounded){
-				if(RMS.currentRift == RiftManagerScript.rifts.red && powerActive){
-					rigidbody2D.AddForce(-Vector2.up * force);
-//					SM.jump.Play();
-				}else{
-					rigidbody2D.AddForce(Vector2.up * force);
-//					SM.jump.Play();
+			//make player jump
+			if(Input.GetKeyDown(KMS.jump)){
+				//check if object is on ground (see GroundBehavior)
+				if(grounded){
+					if(RMS.currentRift == RiftManagerScript.rifts.red && powerActive){
+						rigidbody2D.AddForce(-Vector2.up * force);
+//						SM.jump.Play();
+					}else{
+						rigidbody2D.AddForce(Vector2.up * force);
+//						SM.jump.Play();
+					}
 				}
 			}
-		}
-		if (Input.GetKeyDown (KMS.power)) {
-			if(RMS.currentRift == RiftManagerScript.rifts.yellow){
-				MultiJump();
+			if (Input.GetKeyDown (KMS.power)) {
+				if(RMS.currentRift == RiftManagerScript.rifts.yellow){
+					MultiJump();
+				}
+				if(RMS.currentRift == RiftManagerScript.rifts.blue){
+					powerActive = true;
+					SlowWorld();
+				}
+				if(RMS.currentRift == RiftManagerScript.rifts.red){
+					powerActive = true;
+					GravitySwitch();
+				}
 			}
-			if(RMS.currentRift == RiftManagerScript.rifts.blue){
-				powerActive = true;
-				SlowWorld();
+//			if(!powerActive){
+//				ResetVaules();
+//			}
+			//move player right
+			if (Input.GetKey (KMS.right)) {
+				rigidbody2D.AddForce (Vector2.right * speed);
 			}
-			if(RMS.currentRift == RiftManagerScript.rifts.red){
-				powerActive = true;
-				GravitySwitch();
+			//move player left
+			if (Input.GetKey (KMS.left)) {
+				rigidbody2D.AddForce (-Vector2.right * speed);
 			}
 		}
-		if(!powerActive){
-			Time.timeScale = 1;
-			force = 400;
-//			speed = 10f;
-//			rigidbody2D.drag = 0.2f;
-			rigidbody2D.gravityScale = 1;
-		}
-		//move player right
-		if (Input.GetKey (KMS.right)) {
-			rigidbody2D.AddForce (Vector2.right * speed);
-		}
-		//move player left
-		if (Input.GetKey (KMS.left)) {
-			rigidbody2D.AddForce (-Vector2.right * speed);
-		}
-		if (Input.GetKeyDown (KMS.grab)) {
-			grabbing=true;
-		}
-		if (Input.GetKeyUp (KMS.grab)) {
-			grabbing=false;
-			AddRigidbody();
-		}
+			if (Input.GetKeyDown (KMS.grab)) {
+				grabbing=true;
+			}
+			if (Input.GetKeyUp (KMS.grab)) {
+				grabbing=false;
+				AddRigidbody();
+			}
+		
 	}
 
 	//make player grab cubes or whatever
@@ -137,15 +135,18 @@ public class MovementScript : MonoBehaviour {
 	IEnumerator PowerSpeed(float time){
 		yield return new WaitForSeconds (time);
 		powerActive = false;
+		ResetVaules ();
 	}
 	//Color Blue Power
 	void SlowWorld(){
-		if (powerActive) {
-			Time.timeScale = 0.5f;
-			speed = 14f;
-//			force = force * 2;
-//			rigidbody2D.drag = rigidbody2D.drag * 2;
-			StartCoroutine(PowerSpeed(2f));
+		if(Time.timeScale != 0){
+			if (powerActive) {
+				Time.timeScale = 0.5f;
+				speed = 14f;
+//				force = force * 2;
+//				rigidbody2D.drag = rigidbody2D.drag * 2;
+				StartCoroutine(PowerSpeed(2f));
+			}
 		}
 	}
 
@@ -157,14 +158,26 @@ public class MovementScript : MonoBehaviour {
 		}
 	}
 
-//	void OnCollisionEnter2D(Collision2D other){
-//		if (other.gameObject.tag == "Ground") {
-//			grounded = true;
-//		}
-//	}
+	void OnCollisionEnter2D(Collision2D other){
+		if (other.gameObject.tag == "Ground") {
+			ResetCount();
+		}
+	}
 	void OnCollisionExit2D(Collision2D other){
 		if (other.gameObject.tag == "Ground") {
 			grounded = false;
 		}
+	}
+
+	void ResetCount(){
+		count = 4;
+	}
+
+	void ResetVaules(){
+		Time.timeScale = 1;
+		force = 400;
+		speed = 10f;
+//		rigidbody2D.drag = 0.2f;
+		rigidbody2D.gravityScale = 1;
 	}
 }

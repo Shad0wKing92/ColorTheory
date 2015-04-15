@@ -59,11 +59,13 @@
      <Compile Include="Assets\Scripts\KeyManagerScript.cs" />
      <Compile Include="Assets\Scripts\KillZone.cs" />
      <Compile Include="Assets\Scripts\MovementScript.cs" />
+     <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\RespawnScript.cs" />
      <Compile Include="Assets\Scripts\RiftBehavior.cs" />
      <Compile Include="Assets\Scripts\RiftManagerScript.cs" />
      <Compile Include="Assets\Scripts\Rotate.cs" />
      <Compile Include="Assets\Scripts\SoundManager.cs" />
+     <Compile Include="Assets\Scripts\UIManager.cs" />
      <Compile Include="Assets\Scripts\ZoneChange.cs" />
      <Compile Include="Assets\WallVisionOutlineEffect\WallVisionOutlineEffect.cs" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
