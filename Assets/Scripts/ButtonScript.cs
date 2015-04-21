@@ -21,7 +21,7 @@ public class ButtonScript : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other){
 		if(other.gameObject.tag == ("Grabbable")){
 			_active = true;
-			SM.testChildObject.audio.Play();
+			SM.Door.Play();
 		}
 	}
 

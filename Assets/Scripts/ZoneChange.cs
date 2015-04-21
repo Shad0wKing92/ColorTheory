@@ -4,7 +4,7 @@ using System.Collections;
 public class ZoneChange : MonoBehaviour {
 
 	RiftManagerScript RMS;
-
+	SoundManager SM;
 	public enum rifts{normal, red, orange, yellow, green, blue, purple};
 
 	public rifts currentRift;
@@ -12,6 +12,7 @@ public class ZoneChange : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		RMS = GameObject.FindGameObjectWithTag("RiftManager").GetComponent<RiftManagerScript>();
+		SM = GameObject.FindGameObjectWithTag ("SoundManager").GetComponent<SoundManager> ();
 	}
 	
 	// Update is called once per frame
@@ -42,6 +43,7 @@ public class ZoneChange : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "Player") {
+			SM.RiftSwitch.Play();
 			if (RMS.currentRift == RiftManagerScript.rifts.red)
 				RMS.currentRift = RiftManagerScript.rifts.yellow;
 //			else if (RMS.currentRift == RiftManagerScript.rifts.orange)

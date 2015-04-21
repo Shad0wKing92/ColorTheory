@@ -39,10 +39,10 @@ public class MovementScript : MonoBehaviour {
 				if(grounded){
 					if(RMS.currentRift == RiftManagerScript.rifts.red && powerActive){
 						rigidbody2D.AddForce(-Vector2.up * force);
-//						SM.jump.Play();
+						SM.jump.Play();
 					}else{
 						rigidbody2D.AddForce(Vector2.up * force);
-//						SM.jump.Play();
+						SM.jump.Play();
 					}
 				}
 			}
@@ -99,31 +99,33 @@ public class MovementScript : MonoBehaviour {
 		}
 
 	void AddRigidbody(){
-		if (grabbable.tag == "Grabbable") {
-			if(grabbable.gameObject.rigidbody2D == null){
-				grabbable.gameObject.AddComponent<Rigidbody2D>();
-				grabbable.transform.parent = null;
+//		if(!grabbable == null){
+			if (grabbable.tag == "Grabbable") {
+				if(grabbable.gameObject.rigidbody2D == null){
+					grabbable.gameObject.AddComponent<Rigidbody2D>();
+					grabbable.transform.parent = null;
+				}
 			}
-		}
+//		}
 	}
 	//Color Yellow Power
 	void MultiJump(){
 		if(count == 4){
 			rigidbody2D.AddForce(Vector2.up * (0.8f * force));
 			count--;
-//			SM.YellowPower.Play();
+			SM.YellowPower.Play();
 		}else if(count == 3){
 			rigidbody2D.AddForce(Vector2.up * (0.6f * force));
 			count--;
-//			SM.YellowPower.Play();
+			SM.YellowPower.Play();
 		}else if(count == 2){
 			rigidbody2D.AddForce(Vector2.up * (0.4f * force));
 			count--;
-//			SM.YellowPower.Play();
+			SM.YellowPower.Play();
 		}else if(count == 1){
 			rigidbody2D.AddForce(Vector2.up * (0.2f * force));
 			count--;
-//			SM.YellowPower.Play();
+			SM.YellowPower.Play();
 		}else if(count == 0){
 			rigidbody2D.AddForce(Vector2.up * 0);
 		}
@@ -141,8 +143,9 @@ public class MovementScript : MonoBehaviour {
 	void SlowWorld(){
 		if(Time.timeScale != 0){
 			if (powerActive) {
+				SM.BluePower.Play();
 				Time.timeScale = 0.5f;
-				speed = 14f;
+				speed = 8f;
 //				force = force * 2;
 //				rigidbody2D.drag = rigidbody2D.drag * 2;
 				StartCoroutine(PowerSpeed(2f));
@@ -152,9 +155,9 @@ public class MovementScript : MonoBehaviour {
 
 	void GravitySwitch(){
 		if (powerActive) {
+			SM.RedPower.Play();
 			this.rigidbody2D.gravityScale = -1f;
 			StartCoroutine(PowerSpeed(6f));
-			//SM.RedPower.Play();
 		}
 	}
 
@@ -176,7 +179,7 @@ public class MovementScript : MonoBehaviour {
 	void ResetVaules(){
 		Time.timeScale = 1;
 		force = 400;
-		speed = 10f;
+		speed = 5f;
 //		rigidbody2D.drag = 0.2f;
 		rigidbody2D.gravityScale = 1;
 	}

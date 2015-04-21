@@ -13,8 +13,7 @@ public class SoundManager : MonoBehaviour {
 	public AudioSource SpikeHitting;
 	public AudioSource PlayerDeath;
 	public AudioSource GrabbableDeath;
-
-	public GameObject testChildObject;
+	public AudioSource Door;
 
 
 	static private SoundManager instance;
