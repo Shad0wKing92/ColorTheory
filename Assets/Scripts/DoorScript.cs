@@ -27,13 +27,11 @@ public class DoorScript : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.tag == "Player"){
-			if (GM.CurrentLevel == 0) {
-				Application.LoadLevel (1);
-				//GM.AddToLevel();
-			}else if(GM.CurrentLevel == 1){
-				Application.LoadLevel(2);
-				//GM.AddToLevel();
-			}
+//			if (GM.CurrentLevel == 1) {
+			GM.AddToLevel();
+			Application.LoadLevel (GM.CurrentLevel);
+				
+//			}
 		}
 	}
 }

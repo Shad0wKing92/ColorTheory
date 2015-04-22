@@ -21,39 +21,24 @@ public class KillZone : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other){
 		if(other.gameObject.tag == "Grabbable"){
-//			if(RS.GrabbableInFeild){
-				//Destroy (other.gameObject);
 			SM.GrabbableDeath.Play();
-			other.rigidbody.velocity = new Vector2(0,0);
-			other.transform.position = RS.grabbable.transform.position;
-			other.transform.rotation = RS.grabbable.transform.rotation;
-//			RS.GrabbableInFeild = false;
-//			}
+			RS.MoveObject(other.gameObject);
 		}
 		if(other.gameObject.tag == "Player"){
-//			Destroy(other.gameObject.rigidbody2D);
 			SM.PlayerDeath.Play();
-			other.rigidbody.velocity = new Vector2(0,0);
-			other.transform.position = RS.transform.position;
-			other.transform.rotation = RS.transform.rotation;
+			RS.MoveObject(other.gameObject);
 			GM.RemoveFromLives();
-//			other.gameObject.AddComponent<Rigidbody2D>();
-//			other.transform.rotation = RS.transform.rotation;
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "Player") {
 			SM.PlayerDeath.Play();
-			other.rigidbody2D.velocity = new Vector2 (0, 0);
-			other.transform.position = RS.transform.position;
-			other.transform.rotation = RS.transform.rotation;
+			RS.MoveObject(other.gameObject);
 			GM.RemoveFromLives();
 		} else if (other.gameObject.tag == "Grabbable") {
 			SM.GrabbableDeath.Play();
-			other.rigidbody2D.velocity = new Vector2 (0, 0);
-			other.transform.position = RS.grabbable.transform.position;
-			other.transform.rotation = RS.grabbable.transform.rotation;
+			RS.MoveObject(other.gameObject);
 		}
 	}
 }

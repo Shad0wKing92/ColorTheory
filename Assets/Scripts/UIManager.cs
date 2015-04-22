@@ -18,21 +18,21 @@ public class UIManager : MonoBehaviour {
 
 	public string[] creditsTextLines;
 
-	static private UIManager instance;
+//	static private UIManager instance;
+//	
+//	static public UIManager Instance{
+//		get { return instance;}
+//	}
 	
-	static public UIManager Instance{
-		get { return instance;}
-	}
-	
-	void Awake () {
-		if(instance != null && instance != this){
-			Destroy (gameObject);
-		}else{
-			instance = this;
-		}
-		
-		DontDestroyOnLoad (gameObject);
-	}
+//	void Awake () {
+//		if(instance != null && instance != this){
+//			Destroy (gameObject);
+//		}else{
+//			instance = this;
+//		}
+//		
+//		DontDestroyOnLoad (gameObject);
+//	}
 	// Use this for initialization
 	void Start () {
 		menuState = main;
@@ -73,7 +73,7 @@ public class UIManager : MonoBehaviour {
 	void MenuFunc(int id){
 		if (GUILayout.Button ("Play game")) 
 		{
-			Application.LoadLevel("Level1");
+			Application.LoadLevel(1);
 		}
 		if (GUILayout.Button ("Options")) {
 			menuState = options;

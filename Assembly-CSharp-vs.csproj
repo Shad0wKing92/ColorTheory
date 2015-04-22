@@ -54,8 +54,6 @@
      <Compile Include="Assets\Scripts\FallScript.cs" />
      <Compile Include="Assets\Scripts\FallingSpike.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
-     <Compile Include="Assets\Scripts\GrabbableBehavior.cs" />
-     <Compile Include="Assets\Scripts\GroundBehavior.cs" />
      <Compile Include="Assets\Scripts\KeyManagerScript.cs" />
      <Compile Include="Assets\Scripts\KillZone.cs" />
      <Compile Include="Assets\Scripts\MovementScript.cs" />

@@ -29,4 +29,10 @@ public class RespawnScript : MonoBehaviour {
 //			PlayerInFeild=true;
 //		}
 	}
+
+	public void MoveObject(GameObject thing){
+		thing.rigidbody.velocity = new Vector2(0,0);
+		thing.transform.position = this.transform.position;
+		thing.transform.rotation = this.transform.rotation;
+	}
 }
