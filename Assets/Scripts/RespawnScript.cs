@@ -24,10 +24,11 @@ public class RespawnScript : MonoBehaviour {
             Instantiate(grabbable, this.transform.position, this.transform.rotation);
             GrabbableInFeild = true;
         }
-//		if (!PlayerInFeild && spawnerType == spawner.player) {
-//			Instantiate(Player, transform.position, transform.rotation);
-//			PlayerInFeild=true;
-//		}
+        //if (!PlayerInFeild && spawnerType == spawner.player)
+        //{
+        //    Instantiate(Player, transform.position, transform.rotation);
+        //    PlayerInFeild = true;
+        //}
 	}
 
 	public void MoveObject(GameObject thing){
@@ -35,9 +36,4 @@ public class RespawnScript : MonoBehaviour {
 		thing.transform.position = this.transform.position;
 		thing.transform.rotation = this.transform.rotation;
 	}
-
-    public void MoveGrabbale(bool bol)
-    {
-        GrabbableInFeild = bol;
-    }
 }

@@ -63,11 +63,13 @@ public class MovementScript : MonoBehaviour {
 //				ResetVaules();
 //			}
 			//move player right
-			if (Input.GetKey (KMS.right)) {
+            if (Input.GetAxis("HorizontalJoy") >= 0.1)
+            {
 				rigidbody2D.AddForce (Vector2.right * speed);
 			}
 			//move player left
-			if (Input.GetKey (KMS.left)) {
+            if (Input.GetAxis("HorizontalJoy") <= -0.1)
+            {
 				rigidbody2D.AddForce (-Vector2.right * speed);
 			}
 		}
@@ -75,8 +77,12 @@ public class MovementScript : MonoBehaviour {
 				grabbing=true;
 			}
 			if (Input.GetKeyUp (KMS.grab)) {
-				grabbing=false;
-				AddRigidbody();
+                if (grabbed)
+                {
+                    AddRigidbody();
+                    grabbed = false;
+                }
+                grabbing = false;
 			}
 		
 	}
