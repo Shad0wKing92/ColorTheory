@@ -5,9 +5,11 @@ public class UIManager : MonoBehaviour {
 
 
 	public GUISkin myGUISkin;
-	public Texture2D background, logo;
-	public Rect windowRect = new Rect ((Screen.width / 2) - 100, (Screen.height / 2) - 100, 200, 200);
+	public Texture2D background, logo, Controller;
+	public Rect windowRect = new Rect ((Screen.width / 2), (Screen.height / 2), 200, 200);
 
+    public int ContX;
+    public int ContY;
 
 	string menuState;
 	string main = "main";
@@ -40,12 +42,12 @@ public class UIManager : MonoBehaviour {
 		for (int i = 0; i < creditsTextLines.Length; i++) {
 			textToDisplay += creditsTextLines[i] + "\n";
 		}
-		textToDisplay += "Press Esc To Go Back";
+		textToDisplay += "Press Back To Go Back";
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (menuState == credits && Input.GetKeyDown (KeyCode.Escape))
+		if (menuState == credits && Input.GetKeyDown (KeyCode.Joystick1Button6))
 			menuState = main;
 	}
 
@@ -54,8 +56,12 @@ public class UIManager : MonoBehaviour {
 			GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), background);
 		}
 		if (logo != null) {
-			GUI.DrawTexture(new Rect(Screen.width / 2 - 100, 30, 200,200), logo);
+			GUI.DrawTexture(new Rect(Screen.width / 2 - 100, 30, 300,200), logo);
 		}
+        if (Controller != null)
+        {
+            GUI.DrawTexture(new Rect(ContX, ContY, 300, 200), Controller);
+        }
 
 		GUI.skin = myGUISkin;
 
@@ -75,10 +81,12 @@ public class UIManager : MonoBehaviour {
 		{
 			Application.LoadLevel(1);
 		}
-		if (GUILayout.Button ("Options")) {
+        if (GUILayout.Button("Options"))
+        {
 			menuState = options;
 		}
-		if (GUILayout.Button ("Credits")) {
+        if (GUILayout.Button("Credits"))
+        {
 			menuState = credits;
 		}
 		if (GUILayout.Button ("Quit Game")) {

@@ -24,16 +24,35 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        //if (Application.loadedLevel == 1)
+        //{
+        //    PlayerLives = 5;
+        //}
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+        CurrentLevel = Application.loadedLevel;
+        if (Application.loadedLevel == 0)
+        {
+            PlayerLives = -1;
+        }
+
+        if (Application.loadedLevel != 0)
+        {
+            if (PlayerLives <= 0)
+            {
+                ResetLives(5);
+            }
+        }
 	}
 
 	void OnGUI(){
-		GUI.Label (new Rect (10, 10, 150, 150), ("Player Lives: " + PlayerLives));
+        if (Application.loadedLevel != 0)
+        {
+            GUI.Label(new Rect(10, 10, 150, 150), ("Player Lives: " + PlayerLives));
+        }
 	}
 
 	public void RemoveFromLives(){
@@ -43,4 +62,15 @@ public class GameManager : MonoBehaviour {
 	public void AddToLevel(){
 		CurrentLevel++;
 	}
+
+    public void GameOver() {
+        if (PlayerLives == 0) {
+            Application.LoadLevel("GameOver");
+        }
+    }
+
+    public void ResetLives(int lives)
+    {
+        PlayerLives = lives;
+    }
 }

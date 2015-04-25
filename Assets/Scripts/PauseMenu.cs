@@ -7,9 +7,13 @@ public class PauseMenu : MonoBehaviour {
 	public KeyCode pause;
 
 	void Update () {
-		if(Input.GetKeyDown(pause)){
-			paused = togglePause();
-		}
+        if (Application.loadedLevel != 0)
+        {
+            if (Input.GetKeyDown(pause))
+            {
+                paused = togglePause();
+            }
+        }
 	}
 
 	bool togglePause(){
@@ -31,7 +35,7 @@ public class PauseMenu : MonoBehaviour {
 		{
 			GUI.Box(new Rect(0,0, 1024, 768), "");
 			GUI.Box(new Rect(Screen.width/2 - 50,Screen.height/2 - 10, 200, 200), "");
-			GUI.Label(new Rect(Screen.width/2, Screen.height/2, 100, 100), ("Game is paused!"));
+			GUI.Label(new Rect(Screen.width/2, Screen.height/2, 100, 100), ("PAUSED!"));
 			if(GUI.Button(new Rect(Screen.width/2,Screen.height/2 + 75, 100, 50), "Menu")){
 				Application.LoadLevel(0);
 				togglePause();
