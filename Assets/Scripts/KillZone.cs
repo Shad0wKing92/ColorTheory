@@ -22,14 +22,12 @@ public class KillZone : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other){
-		if(other.gameObject.tag == "Grabbable"){
-            //RS = GameObject.FindGameObjectWithTag("GRespawner").GetComponent<RespawnScript>();
-			SM.GrabbableDeath.Play();
-            RS.GrabbableInFeild = false;
-            Destroy(other.gameObject);
-		}
+        //if(other.gameObject.tag == "Grabbable"){
+        //    SM.GrabbableDeath.Play();
+        //    RS.GrabbableInFeild = false;
+        //    Destroy(other.gameObject);
+        //}
 		if(other.gameObject.tag == "Player"){
-            //RS = GameObject.FindGameObjectWithTag("Respawner").GetComponent<RespawnScript>();
 			SM.PlayerDeath.Play();
             PRS.MoveObject(other.gameObject);
 			GM.RemoveFromLives();
@@ -38,15 +36,13 @@ public class KillZone : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "Player") {
-            //RS = GameObject.FindGameObjectWithTag("Respawner").GetComponent<RespawnScript>();
 			SM.PlayerDeath.Play();
             PRS.MoveObject(other.gameObject);
 			GM.RemoveFromLives();
-		} else if (other.gameObject.tag == "Grabbable") {
-            //RS = GameObject.FindGameObjectWithTag("GRespawner").GetComponent<RespawnScript>();
-            SM.GrabbableDeath.Play();
-            RS.GrabbableInFeild = false; 
-            Destroy(other.gameObject);
-		}
+        //} else if (other.gameObject.tag == "Grabbable") {
+        //    SM.GrabbableDeath.Play();
+        //    RS.GrabbableInFeild = false; 
+        //    Destroy(other.gameObject);
+        }
 	}
 }

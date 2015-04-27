@@ -5,6 +5,7 @@ public class ZoneChange : MonoBehaviour {
 
 	RiftManagerScript RMS;
 	SoundManager SM;
+    MovementScript MS;
 	public enum rifts{normal, red, orange, yellow, green, blue, purple};
 
 	public rifts currentRift;
@@ -13,6 +14,7 @@ public class ZoneChange : MonoBehaviour {
 	void Start () {
 		RMS = GameObject.FindGameObjectWithTag("RiftManager").GetComponent<RiftManagerScript>();
 		SM = GameObject.FindGameObjectWithTag ("SoundManager").GetComponent<SoundManager> ();
+        MS = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>();
 	}
 	
 	// Update is called once per frame
@@ -44,21 +46,31 @@ public class ZoneChange : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "Player") {
 			SM.RiftSwitch.Play();
-			if (RMS.currentRift == RiftManagerScript.rifts.red)
-				RMS.currentRift = RiftManagerScript.rifts.yellow;
-//			else if (RMS.currentRift == RiftManagerScript.rifts.orange)
-//				RMS.currentRift = RiftManagerScript.rifts.yellow;
-			else if (RMS.currentRift == RiftManagerScript.rifts.yellow)
-				RMS.currentRift = RiftManagerScript.rifts.blue;
-//			else if (RMS.currentRift == RiftManagerScript.rifts.green)
-//				RMS.currentRift = RiftManagerScript.rifts.blue;
-			else if (RMS.currentRift == RiftManagerScript.rifts.blue)
-				RMS.currentRift = RiftManagerScript.rifts.red;
-//			else if (RMS.currentRift == RiftManagerScript.rifts.purple)
-//				RMS.currentRift = RiftManagerScript.rifts.red;
-//			} else if (RMS.currentRift == RiftManagerScript.rifts.old && currentRift == rifts.knew) {
-//				RMS.currentRift = RiftManagerScript.rifts.knew;
-//			}
+            if (RMS.currentRift == RiftManagerScript.rifts.red)
+            {
+                if (MS.powerActive == true)
+                {
+                    MS.powerActive = false;
+                    MS.rigidbody2D.gravityScale = 1;
+                }
+                RMS.currentRift = RiftManagerScript.rifts.yellow;
+                
+            }
+            else if (RMS.currentRift == RiftManagerScript.rifts.yellow)
+            {
+                RMS.currentRift = RiftManagerScript.rifts.blue;
+                
+            }
+            else if (RMS.currentRift == RiftManagerScript.rifts.blue)
+            {
+                if (MS.powerActive == true)
+                {
+                    MS.powerActive = false;
+                    Time.timeScale = 1;
+                }
+                RMS.currentRift = RiftManagerScript.rifts.red;
+                
+            }
 		}
 	}
 }

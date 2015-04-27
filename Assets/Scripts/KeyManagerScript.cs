@@ -10,6 +10,9 @@ public class KeyManagerScript : MonoBehaviour {
 	public KeyCode jump;
 	public KeyCode grab;
 	public KeyCode power;
+    public KeyCode KeyBoardjump;
+    public KeyCode KeyBoardgrab;
+    public KeyCode KeyBoardpower;
 
 	// Use this for initialization
 	void Start () {

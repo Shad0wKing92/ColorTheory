@@ -34,7 +34,8 @@ public class MovementScript : MonoBehaviour {
 		if(Time.timeScale != 0){
 
 			//make player jump
-			if(Input.GetKeyDown(KMS.jump)){
+            if (Input.GetKeyDown(KMS.jump) || Input.GetKeyDown(KMS.KeyBoardjump))
+            {
 				//check if object is on ground (see GroundBehavior)
 				if(grounded){
 					if(RMS.currentRift == RiftManagerScript.rifts.red && powerActive){
@@ -46,7 +47,8 @@ public class MovementScript : MonoBehaviour {
 					}
 				}
 			}
-			if (Input.GetKeyDown (KMS.power)) {
+            if (Input.GetKeyDown(KMS.power) || Input.GetKeyDown(KMS.KeyBoardpower))
+            {
 				if(RMS.currentRift == RiftManagerScript.rifts.yellow){
 					MultiJump();
 				}
@@ -63,20 +65,22 @@ public class MovementScript : MonoBehaviour {
 //				ResetVaules();
 //			}
 			//move player right
-            if (Input.GetAxis("HorizontalJoy") >= 0.1)
+            if (Input.GetAxis("HorizontalJoy") >= 0.1 || Input.GetKey(KMS.right))
             {
 				rigidbody2D.AddForce (Vector2.right * speed);
 			}
 			//move player left
-            if (Input.GetAxis("HorizontalJoy") <= -0.1)
+            if (Input.GetAxis("HorizontalJoy") <= -0.1 || Input.GetKey(KMS.left))
             {
 				rigidbody2D.AddForce (-Vector2.right * speed);
 			}
 		}
-			if (Input.GetKeyDown (KMS.grab)) {
+        if (Input.GetKeyDown(KMS.grab) || Input.GetKeyDown(KMS.KeyBoardgrab))
+        {
 				grabbing=true;
 			}
-			if (Input.GetKeyUp (KMS.grab)) {
+            if (Input.GetKeyUp(KMS.grab) || Input.GetKeyUp(KMS.KeyBoardgrab))
+            {
                 if (grabbed)
                 {
                     AddRigidbody();
@@ -85,7 +89,24 @@ public class MovementScript : MonoBehaviour {
                 grabbing = false;
 			}
 		
+
+
 	}
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            ResetCount();
+        }
+    }
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            grounded = false;
+        }
+    }
 
 	//make player grab cubes or whatever
 	void OnCollisionStay2D(Collision2D other){
@@ -152,8 +173,6 @@ public class MovementScript : MonoBehaviour {
 				SM.BluePower.Play();
 				Time.timeScale = 0.5f;
 				speed = 8f;
-//				force = force * 2;
-//				rigidbody2D.drag = rigidbody2D.drag * 2;
 				StartCoroutine(PowerSpeed(2f));
 			}
 		}
@@ -167,17 +186,6 @@ public class MovementScript : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D other){
-		if (other.gameObject.tag == "Ground") {
-			ResetCount();
-		}
-	}
-	void OnCollisionExit2D(Collision2D other){
-		if (other.gameObject.tag == "Ground") {
-			grounded = false;
-		}
-	}
-
 	void ResetCount(){
 		count = 4;
 	}
@@ -186,7 +194,6 @@ public class MovementScript : MonoBehaviour {
 		Time.timeScale = 1;
 		force = 400;
 		speed = 5f;
-//		rigidbody2D.drag = 0.2f;
 		rigidbody2D.gravityScale = 1;
 	}
 }
