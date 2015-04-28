@@ -1,15 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\KillZone.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MovementScript.cs">
     <Files>
-      <File FileName="Assets\Scripts\KillZone.cs" Line="41" Column="34" />
-      <File FileName="Assets\Scripts\UIManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MovementScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DoorScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\FallScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\FallingSpike.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\RespawnScript.cs" Line="35" Column="19" />
+      <File FileName="Assets\Scripts\MovementScript.cs" Line="50" Column="105" />
+      <File FileName="Assets\Scripts\KeyManagerScript.cs" Line="28" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

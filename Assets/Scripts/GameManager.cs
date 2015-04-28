@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour {
 
         if (Application.loadedLevel != 0)
         {
-            if (PlayerLives <= 0)
+            if (PlayerLives < 0)
             {
                 ResetLives(5);
             }
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameOver() {
         if (PlayerLives == 0) {
-            Application.LoadLevel("GameOver");
+            //Application.LoadLevel("GameOver");
         }
     }
 

@@ -47,7 +47,7 @@ public class MovementScript : MonoBehaviour {
 					}
 				}
 			}
-            if (Input.GetKeyDown(KMS.power) || Input.GetKeyDown(KMS.KeyBoardpower))
+			if (Input.GetKeyDown(KMS.power) || Input.GetKeyDown(KMS.KeyBoardpower) || Input.GetKeyDown(KMS.power2))
             {
 				if(RMS.currentRift == RiftManagerScript.rifts.yellow){
 					MultiJump();

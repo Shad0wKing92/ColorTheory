@@ -10,6 +10,7 @@ public class KeyManagerScript : MonoBehaviour {
 	public KeyCode jump;
 	public KeyCode grab;
 	public KeyCode power;
+	public KeyCode power2;
     public KeyCode KeyBoardjump;
     public KeyCode KeyBoardgrab;
     public KeyCode KeyBoardpower;
