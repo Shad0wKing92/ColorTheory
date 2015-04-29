@@ -33,7 +33,7 @@ public class PauseMenu : MonoBehaviour {
 	{
 		if(paused)
 		{
-			GUI.Box(new Rect(0,0, 1024, 768), "");
+			GUI.Box(new Rect(0,0, Screen.width, Screen.height), "");
 			GUI.Box(new Rect(Screen.width/2 - 50,Screen.height/2 - 10, 200, 200), "");
 			GUI.Label(new Rect(Screen.width/2, Screen.height/2, 100, 100), ("PAUSED!"));
 			if(GUI.Button(new Rect(Screen.width/2,Screen.height/2 + 75, 100, 50), "Menu")){

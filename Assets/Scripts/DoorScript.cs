@@ -31,8 +31,15 @@ public class DoorScript : MonoBehaviour {
             {
                 Time.timeScale = 1;
             }
-            GM.AddToLevel();
-			Application.LoadLevel (GM.CurrentLevel);
+            if (GM.CurrentLevel != 4)
+            {
+                GM.AddToLevel();
+                Application.LoadLevel(GM.CurrentLevel);
+            }
+            else if (GM.CurrentLevel == 4)
+            {
+                Application.LoadLevel(0);
+            }
 		}
 	}
 }
