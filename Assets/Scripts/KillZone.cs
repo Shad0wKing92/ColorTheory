@@ -3,10 +3,11 @@ using System.Collections;
 
 public class KillZone : MonoBehaviour {
 
-	public RespawnScript RS;
-    public RespawnScript PRS;
+	RespawnScript RS;
+    RespawnScript PRS;
 	GameManager GM;
 	SoundManager SM;
+    MovementScript MS;
 
 	// Use this for initialization
 	void Start () {
@@ -14,6 +15,7 @@ public class KillZone : MonoBehaviour {
         PRS = GameObject.FindGameObjectWithTag("Respawner").GetComponent<RespawnScript>();
 		GM = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<GameManager> ();
 		SM = GameObject.FindGameObjectWithTag ("SoundManager").GetComponent<SoundManager> ();
+        MS = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>();
 	}
 	
 	// Update is called once per frame

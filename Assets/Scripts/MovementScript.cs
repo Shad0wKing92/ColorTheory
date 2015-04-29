@@ -10,9 +10,9 @@ public class MovementScript : MonoBehaviour {
 	SoundManager SM;
 	public float force;
 	public float speed;
-	bool grabbed;
+    [HideInInspector]public bool grabbed;
 	GameObject grabbable;
-	bool grabbing;
+    [HideInInspector]public bool grabbing;
 	int count = 4;
 	[HideInInspector]public bool powerActive;
 	[HideInInspector]public bool grounded;
@@ -77,18 +77,17 @@ public class MovementScript : MonoBehaviour {
 		}
         if (Input.GetKeyDown(KMS.grab) || Input.GetKeyDown(KMS.KeyBoardgrab))
         {
-				grabbing=true;
-			}
-            if (Input.GetKeyUp(KMS.grab) || Input.GetKeyUp(KMS.KeyBoardgrab))
-            {
+				grabbing = true;
                 if (grabbed)
                 {
-                    AddRigidbody();
-                    grabbed = false;
+                    if (Input.GetKeyDown(KMS.grab) || Input.GetKeyDown(KMS.KeyBoardgrab))
+                    {
+                        Release();
+                    }
                 }
-                grabbing = false;
-			}
-		
+        }
+
+        
 
 
 	}
@@ -196,4 +195,14 @@ public class MovementScript : MonoBehaviour {
 		speed = 5f;
 		rigidbody2D.gravityScale = 1;
 	}
+
+    public void Release()
+    {
+        if (grabbed)
+        {
+            AddRigidbody();
+            grabbed = false;
+        }
+        grabbing = false;
+    }
 }
