@@ -53,14 +53,24 @@ public class MovementScript : MonoBehaviour {
 					MultiJump();
 				}
 				if(RMS.currentRift == RiftManagerScript.rifts.blue){
-					powerActive = true;
-					SlowWorld();
+					//powerActive = true;
+					if(!powerActive){
+						SlowWorld();
+					}else if(powerActive){
+						ResetVaules();
+					}
 				}
 				if(RMS.currentRift == RiftManagerScript.rifts.red){
-					powerActive = true;
-					GravitySwitch(true);
+					//powerActive = true;
+					if(!powerActive){
+						GravitySwitch();
+					}else if(powerActive){
+						ResetVaules();
+					}
 				}
+
 			}
+
 //			if(!powerActive){
 //				ResetVaules();
 //			}
@@ -87,10 +97,6 @@ public class MovementScript : MonoBehaviour {
 	            }
 	        }
         }
-
-        
-
-
 	}
 
     void OnCollisionEnter2D(Collision2D other)
@@ -169,21 +175,23 @@ public class MovementScript : MonoBehaviour {
 	//Color Blue Power
 	void SlowWorld(){
 		if(Time.timeScale != 0){
-			if (powerActive) {
-				SM.BluePower.Play();
-				Time.timeScale = 0.5f;
-				speed = 8f;
-				StartCoroutine(PowerSpeed(2f));
-			}
+			//if (powerActive) {
+			powerActive = true;
+			SM.BluePower.Play();
+			Time.timeScale = 0.5f;
+			speed = 8f;
+			StartCoroutine(PowerSpeed(2f));
+			//}
 		}
 	}
 
-	void GravitySwitch(bool active){
-		if (powerActive) {
-			SM.RedPower.Play();
-			this.rigidbody2D.gravityScale = -1f;
-			StartCoroutine(PowerSpeed(6f));
-		}
+	void GravitySwitch(){
+		//if (powerActive) {
+		powerActive = true;
+		SM.RedPower.Play();
+		this.rigidbody2D.gravityScale = -1f;
+		StartCoroutine(PowerSpeed(6f));
+		//}
 	}
 
 	void ResetCount(){
@@ -191,6 +199,7 @@ public class MovementScript : MonoBehaviour {
 	}
 
 	void ResetVaules(){
+		powerActive = false;
 		Time.timeScale = 1;
 		force = 400;
 		speed = 5f;
