@@ -58,7 +58,7 @@ public class MovementScript : MonoBehaviour {
 				}
 				if(RMS.currentRift == RiftManagerScript.rifts.red){
 					powerActive = true;
-					GravitySwitch();
+					GravitySwitch(true);
 				}
 			}
 //			if(!powerActive){
@@ -77,14 +77,15 @@ public class MovementScript : MonoBehaviour {
 		}
         if (Input.GetKeyDown(KMS.grab) || Input.GetKeyDown(KMS.KeyBoardgrab))
         {
-				grabbing = true;
-                if (grabbed)
-                {
-                    if (Input.GetKeyDown(KMS.grab) || Input.GetKeyDown(KMS.KeyBoardgrab))
-                    {
-                        Release();
-                    }
-                }
+			grabbing = true;
+
+	        if (grabbed)
+	        {
+	            if (Input.GetKeyDown(KMS.grab) || Input.GetKeyDown(KMS.KeyBoardgrab))
+	            {
+	                Release();
+	            }
+	        }
         }
 
         
@@ -177,7 +178,7 @@ public class MovementScript : MonoBehaviour {
 		}
 	}
 
-	void GravitySwitch(){
+	void GravitySwitch(bool active){
 		if (powerActive) {
 			SM.RedPower.Play();
 			this.rigidbody2D.gravityScale = -1f;
