@@ -24,11 +24,13 @@ public class KillZone : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other){
-        //if(other.gameObject.tag == "Grabbable"){
-        //    SM.GrabbableDeath.Play();
-        //    RS.GrabbableInFeild = false;
-        //    Destroy(other.gameObject);
-        //}
+        if (other.gameObject.tag == "Grabbable")
+        {
+            SM.GrabbableDeath.Play();
+            Instantiate(RS.DeathParticle, other.transform.position, other.transform.rotation);
+            RS.GrabbableInFeild = false;
+            Destroy(other.gameObject);
+        }
 		if(other.gameObject.tag == "Player"){
 			SM.PlayerDeath.Play();
             PRS.MoveObject(other.gameObject);

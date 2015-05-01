@@ -7,6 +7,7 @@ public class RespawnScript : MonoBehaviour {
 	public GameObject Player;
 	public bool GrabbableInFeild;
 	public bool PlayerInFeild;
+    public GameObject DeathParticle;
 
 	public enum spawner{player, grabbable};
 	public spawner spawnerType; 
@@ -32,6 +33,7 @@ public class RespawnScript : MonoBehaviour {
 	}
 
 	public void MoveObject(GameObject thing){
+        Instantiate(DeathParticle, thing.transform.position, thing.transform.rotation);
 		thing.rigidbody2D.velocity = new Vector2(0,0);
 		thing.transform.position = this.transform.position;
 		thing.transform.rotation = this.transform.rotation;
