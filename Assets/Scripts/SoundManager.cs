@@ -4,7 +4,7 @@ using System.Collections;
 public class SoundManager : MonoBehaviour {
 
 	public AudioSource jump;
-	public AudioSource BackgroundMusic;
+	public AudioSource Bell;
 	public AudioSource RiftSwitch;
 	public AudioSource RedPower;
 	public AudioSource YellowPower;

@@ -187,7 +187,9 @@ public class MovementScript : MonoBehaviour {
 	}
 
 	IEnumerator PowerSpeed(float time){
-		yield return new WaitForSeconds (time);
+		yield return new WaitForSeconds (time - 0.5f);
+        SM.Bell.Play();
+        yield return new WaitForSeconds(0.5f);
 		powerActive = false;
 		ResetVaules ();
 	}
@@ -223,6 +225,7 @@ public class MovementScript : MonoBehaviour {
 		force = 400;
 		speed = 5f;
 		rigidbody2D.gravityScale = 1;
+        StopAllCoroutines();
 	}
 
     public void Release()

@@ -46,9 +46,12 @@ public class GameManager : MonoBehaviour {
             {
                 ResetLives(5);
             }
-            if (PlayerLives == 0)
+            if (Application.loadedLevel != 5)
             {
-                GameOver();
+                if (PlayerLives == 0)
+                {
+                    GameOver();
+                }
             }
         }
 
