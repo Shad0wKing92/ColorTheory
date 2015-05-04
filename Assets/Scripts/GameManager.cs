@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour {
 
 	public int PlayerLives;
 	public int CurrentLevel;
+    public GUIStyle style;
 
 	static private GameManager instance;
 	
@@ -45,13 +46,25 @@ public class GameManager : MonoBehaviour {
             {
                 ResetLives(5);
             }
+            if (PlayerLives == 0)
+            {
+                GameOver();
+            }
         }
+
 	}
 
 	void OnGUI(){
-        if (Application.loadedLevel != 0)
+        if (Application.loadedLevel != 0 || Application.loadedLevel != 5)
         {
-            GUI.Label(new Rect(10, 10, 150, 150), ("Player Lives: " + PlayerLives));
+            GUI.Label(new Rect(10, 10, 150, 150), ("Player Lives: " + PlayerLives), style);
+        }
+        if (Application.loadedLevel == 5)
+        {
+            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 150, 150), ("GameOver"), style);
+            if(GUI.Button(new Rect(Screen.width / 2, (Screen.height / 2) - 150, 150,150), "Main Menu")){
+                Application.LoadLevel(0);
+            }
         }
 	}
 
@@ -65,7 +78,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameOver() {
         if (PlayerLives == 0) {
-            //Application.LoadLevel("GameOver");
+            Application.LoadLevel(5);
         }
     }
 

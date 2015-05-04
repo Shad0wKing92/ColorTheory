@@ -1,0 +1,28 @@
+Initialize engine version: 4.5.3f3 (fca41a4fabea)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA Quadro K2000 (ID=0xffe)
+    Vendor:   NVIDIA
+    VRAM:     1974 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\BetaBuild2_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\BetaBuild2_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\BetaBuild2_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\BetaBuild2_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\BetaBuild2_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\BetaBuild2_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\BetaBuild2_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\BetaBuild2_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\BetaBuild2_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\BetaBuild2_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+- Completed reload, in  0.107 seconds
+desktop: 1920x1200 59Hz; virtual: 3840x1200 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+UnloadTime: 0.856529 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 44 unused Assets to reduce memory usage. Loaded Objects now: 818.
+Total: 0.898728 ms (FindLiveObjects: 0.030508 ms CreateObjectMapping: 0.014256 ms MarkObjects: 0.131729 ms  DeleteObjects: 0.110345 ms)
+

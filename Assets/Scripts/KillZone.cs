@@ -33,6 +33,10 @@ public class KillZone : MonoBehaviour {
         }
 		if(other.gameObject.tag == "Player"){
 			SM.PlayerDeath.Play();
+            if (MS.grabbed)
+            {
+                MS.Release();
+            }
             StartCoroutine(WaitTime(2f, other.gameObject));
 			GM.RemoveFromLives();
 		}
@@ -41,6 +45,10 @@ public class KillZone : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == "Player") {
 			SM.PlayerDeath.Play();
+            if (MS.grabbed)
+            {
+                MS.Release();
+            }
             StartCoroutine(WaitTime(2f, other.gameObject));
 			GM.RemoveFromLives();
         //} else if (other.gameObject.tag == "Grabbable") {
@@ -56,10 +64,12 @@ public class KillZone : MonoBehaviour {
         other.collider2D.enabled = false;
         other.rigidbody2D.gravityScale = 0;
         Instantiate(RS.DeathParticle, other.transform.position, other.transform.rotation);
+        MS.dead = true;
         yield return new WaitForSeconds(time);
         PRS.MoveObject(other.gameObject);
         other.renderer.enabled = true;
         other.collider2D.enabled = true;
         other.rigidbody2D.gravityScale = 1;
+        MS.dead = false;
     }
 }

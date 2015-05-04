@@ -7,7 +7,7 @@ public class PauseMenu : MonoBehaviour {
 	public KeyCode pause;
 
 	void Update () {
-        if (Application.loadedLevel != 0)
+        if (Application.loadedLevel != 0 || Application.loadedLevel != 5)
         {
             if (Input.GetKeyDown(pause))
             {

@@ -16,6 +16,7 @@ public class MovementScript : MonoBehaviour {
 	int count = 4;
 	[HideInInspector]public bool powerActive;
 	[HideInInspector]public bool grounded;
+    [HideInInspector]public bool dead;
 
 	// Use this for initialization
 	void Start () {
@@ -31,73 +32,91 @@ public class MovementScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Time.timeScale != 0){
-
-			//make player jump
-            if (Input.GetKeyDown(KMS.jump) || Input.GetKeyDown(KMS.KeyBoardjump))
-            {
-				//check if object is on ground (see GroundBehavior)
-				if(grounded){
-					if(RMS.currentRift == RiftManagerScript.rifts.red && powerActive){
-						rigidbody2D.AddForce(-Vector2.up * force);
-						SM.jump.Play();
-					}else{
-						rigidbody2D.AddForce(Vector2.up * force);
-						SM.jump.Play();
-					}
-				}
-			}
-			if (Input.GetKeyDown(KMS.power) || Input.GetKeyDown(KMS.KeyBoardpower) || Input.GetKeyDown(KMS.power2))
-            {
-				if(RMS.currentRift == RiftManagerScript.rifts.yellow){
-					MultiJump();
-				}
-				if(RMS.currentRift == RiftManagerScript.rifts.blue){
-					//powerActive = true;
-					if(!powerActive){
-						SlowWorld();
-					}else if(powerActive){
-						ResetVaules();
-					}
-				}
-				if(RMS.currentRift == RiftManagerScript.rifts.red){
-					//powerActive = true;
-					if(!powerActive){
-						GravitySwitch();
-					}else if(powerActive){
-						ResetVaules();
-					}
-				}
-
-			}
-
-//			if(!powerActive){
-//				ResetVaules();
-//			}
-			//move player right
-            if (Input.GetAxis("HorizontalJoy") >= 0.1 || Input.GetKey(KMS.right))
-            {
-				rigidbody2D.AddForce (Vector2.right * speed);
-			}
-			//move player left
-            if (Input.GetAxis("HorizontalJoy") <= -0.1 || Input.GetKey(KMS.left))
-            {
-				rigidbody2D.AddForce (-Vector2.right * speed);
-			}
-		}
-        if (Input.GetKeyDown(KMS.grab) || Input.GetKeyDown(KMS.KeyBoardgrab))
+        if (Time.timeScale != 0)
         {
-			grabbing = true;
+            if (!dead)
+            {
 
-	        if (grabbed)
-	        {
-	            if (Input.GetKeyDown(KMS.grab) || Input.GetKeyDown(KMS.KeyBoardgrab))
-	            {
-	                Release();
-	            }
-	        }
+                //make player jump
+                if (Input.GetKeyDown(KMS.jump) || Input.GetKeyDown(KMS.KeyBoardjump))
+                {
+                    //check if object is on ground (see GroundBehavior)
+                    if (grounded)
+                    {
+                        if (RMS.currentRift == RiftManagerScript.rifts.red && powerActive)
+                        {
+                            rigidbody2D.AddForce(-Vector2.up * force);
+                            SM.jump.Play();
+                        }
+                        else
+                        {
+                            rigidbody2D.AddForce(Vector2.up * force);
+                            SM.jump.Play();
+                        }
+                    }
+                }
+                if (Input.GetKeyDown(KMS.power) || Input.GetKeyDown(KMS.KeyBoardpower) || Input.GetKeyDown(KMS.power2))
+                {
+                    if (RMS.currentRift == RiftManagerScript.rifts.yellow)
+                    {
+                        MultiJump();
+                    }
+                    if (RMS.currentRift == RiftManagerScript.rifts.blue)
+                    {
+                        //powerActive = true;
+                        if (!powerActive)
+                        {
+                            SlowWorld();
+                        }
+                        else if (powerActive)
+                        {
+                            ResetVaules();
+                        }
+                    }
+                    if (RMS.currentRift == RiftManagerScript.rifts.red)
+                    {
+                        //powerActive = true;
+                        if (!powerActive)
+                        {
+                            GravitySwitch();
+                        }
+                        else if (powerActive)
+                        {
+                            ResetVaules();
+                        }
+                    }
+
+                }
+
+                //			if(!powerActive){
+                //				ResetVaules();
+                //			}
+                //move player right
+                if (Input.GetAxis("HorizontalJoy") >= 0.1 || Input.GetKey(KMS.right))
+                {
+                    rigidbody2D.AddForce(Vector2.right * speed);
+                }
+                //move player left
+                if (Input.GetAxis("HorizontalJoy") <= -0.1 || Input.GetKey(KMS.left))
+                {
+                    rigidbody2D.AddForce(-Vector2.right * speed);
+                }
+            }
+            if (Input.GetKeyDown(KMS.grab) || Input.GetKeyDown(KMS.KeyBoardgrab))
+            {
+                grabbing = true;
+
+                if (grabbed)
+                {
+                    if (Input.GetKeyDown(KMS.grab) || Input.GetKeyDown(KMS.KeyBoardgrab))
+                    {
+                        Release();
+                    }
+                }
+            }
         }
-	}
+    }
+
 
     void OnCollisionEnter2D(Collision2D other)
     {

@@ -5,11 +5,13 @@ public class FallingSpike : MonoBehaviour {
 
 	public GameObject Parent;
 	SoundManager SM;
+    public bool CanFall;
 
 
 	// Use this for initialization
 	void Start () {
 		SM = GameObject.FindGameObjectWithTag ("SoundManager").GetComponent<SoundManager> ();
+        //CanFall = false;
 	}
 	
 	// Update is called once per frame
@@ -22,14 +24,20 @@ public class FallingSpike : MonoBehaviour {
 			SM.SpikeHitting.Play();
 			Destroy(this.gameObject.rigidbody2D);
 			this.transform.position = Parent.transform.position;
-            StartCoroutine(SpikeTimer(2f));
+            if (CanFall)
+            {
+                StartCoroutine(SpikeTimer(2f));
+            }
         }
         else if (other.gameObject.tag == "Ground")
         {
             SM.SpikeHitting.Play();
             Destroy(this.gameObject.rigidbody2D);
             this.transform.position = Parent.transform.position;
-            StartCoroutine(SpikeTimer(2f));
+            if (CanFall)
+            {
+                StartCoroutine(SpikeTimer(2f));
+            }
         }
 	}
 
