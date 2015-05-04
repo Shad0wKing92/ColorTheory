@@ -22,6 +22,7 @@ public class FallingSpike : MonoBehaviour {
 			SM.SpikeHitting.Play();
 			Destroy(this.gameObject.rigidbody2D);
 			this.transform.position = Parent.transform.position;
+            StartCoroutine(SpikeTimer(2f));
         }
         else if (other.gameObject.tag == "Ground")
         {
