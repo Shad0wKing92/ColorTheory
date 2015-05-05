@@ -6,13 +6,14 @@ public class UIManager : MonoBehaviour {
 
 	public GUISkin myGUISkin;
 	public Texture2D background, logo, Controller;
-	public Rect windowRect = new Rect ((Screen.width / 2), (Screen.height / 2), 200, 200);
+    Rect windowRect = new Rect(Screen.width / 10, Screen.height /2 - 100, 200, 200);
 
     public int ContX;
-    public int ContY;
+    int ContY = Screen.height - 300;
 
 	string menuState;
 	string main = "main";
+    string levelSelect = "level select";
 	string options = "options";
 	string credits = "credits";
 	string textToDisplay = "Credits: \n";
@@ -20,35 +21,18 @@ public class UIManager : MonoBehaviour {
 
 	public string[] creditsTextLines;
 
-//	static private UIManager instance;
-//	
-//	static public UIManager Instance{
-//		get { return instance;}
-//	}
-	
-//	void Awake () {
-//		if(instance != null && instance != this){
-//			Destroy (gameObject);
-//		}else{
-//			instance = this;
-//		}
-//		
-//		DontDestroyOnLoad (gameObject);
-//	}
-	// Use this for initialization
 	void Start () {
 		menuState = main;
 
 		for (int i = 0; i < creditsTextLines.Length; i++) {
 			textToDisplay += creditsTextLines[i] + "\n";
 		}
-		textToDisplay += "Press Back To Go Back";
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (menuState == credits && Input.GetKeyDown (KeyCode.Joystick1Button6))
-			menuState = main;
+        //if (menuState == credits && Input.GetKeyDown (KeyCode.Joystick1Button6))
+        //    menuState = main;
 	}
 
 	void OnGUI(){
@@ -56,11 +40,11 @@ public class UIManager : MonoBehaviour {
 			GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), background);
 		}
 		if (logo != null) {
-			GUI.DrawTexture(new Rect(Screen.width / 2 - 100, 30, 300,200), logo);
+			GUI.DrawTexture(new Rect(30, 30, 450, 300), logo);
 		}
         if (Controller != null)
         {
-            GUI.DrawTexture(new Rect(ContX, ContY, 300, 200), Controller);
+            GUI.DrawTexture(new Rect(ContX, ContY, 450, 300), Controller);
         }
 
 		GUI.skin = myGUISkin;
@@ -72,8 +56,13 @@ public class UIManager : MonoBehaviour {
 			windowRect = GUI.Window(1, windowRect, OptionsFunc, "Options");
 		}
 		if (menuState == credits) {
-			GUI.Box(new Rect(0,0,Screen.width,Screen.height), textToDisplay);
+            windowRect = GUI.Window(3, windowRect, CreditsFunc, "Credits");
+            //GUI.Box(new Rect(0,0,Screen.width,Screen.height), textToDisplay);
 		}
+        if (menuState == levelSelect)
+        {
+            windowRect = GUI.Window(2, windowRect, LevelSelectFunc, "Level Select");
+        }
 	}
 
 	void MenuFunc(int id){
@@ -81,6 +70,10 @@ public class UIManager : MonoBehaviour {
 		{
 			Application.LoadLevel(1);
 		}
+        if (GUILayout.Button("Level Select"))
+        {
+            menuState = levelSelect;
+        }
         if (GUILayout.Button("Options"))
         {
 			menuState = options;
@@ -102,4 +95,35 @@ public class UIManager : MonoBehaviour {
 			menuState = main;
 		}
 	}
+
+    void LevelSelectFunc(int id)
+    {
+        if (GUILayout.Button("Intro"))
+        {
+            Application.LoadLevel(1);
+        }
+        if (GUILayout.Button("Level Red"))
+        {
+            Application.LoadLevel(2);
+        }
+        if (GUILayout.Button("Level Yellow"))
+        {
+            Application.LoadLevel(3);
+        }
+        if (GUILayout.Button("Level Blue"))
+        {
+            Application.LoadLevel(4);
+        }
+    }
+
+    void CreditsFunc(int id)
+    {
+        GUILayout.Box("Credits");
+        GUILayout.Label(textToDisplay);
+        //GUI.Label(windowRect, textToDisplay);
+        if (GUILayout.Button("Back"))
+        {
+            menuState = main;
+        }
+    }
 }

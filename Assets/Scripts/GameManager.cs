@@ -58,9 +58,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void OnGUI(){
-        if (Application.loadedLevel != 0 || Application.loadedLevel != 5)
+        if (Application.loadedLevel != 0)
         {
-            GUI.Label(new Rect(10, 10, 150, 150), ("Player Lives: " + PlayerLives), style);
+            if (Application.loadedLevel != 5)
+            {
+                GUI.Label(new Rect(10, 10, 150, 150), ("Player Lives: " + PlayerLives), style);
+            }
         }
         if (Application.loadedLevel == 5)
         {
