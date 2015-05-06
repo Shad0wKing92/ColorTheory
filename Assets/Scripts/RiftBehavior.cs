@@ -32,7 +32,7 @@ public class RiftBehavior : MonoBehaviour {
 				this.gameObject.layer = 11;
 			}
 			if (RMS.currentRift == RiftManagerScript.rifts.yellow) {
-				this.gameObject.layer = 12;
+				//this.gameObject.layer = 12;
 			}
 			if (RMS.currentRift == RiftManagerScript.rifts.blue) {
 				this.gameObject.layer = 13;

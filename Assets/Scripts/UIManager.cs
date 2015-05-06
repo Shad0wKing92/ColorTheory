@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour {
     Rect windowRect = new Rect(Screen.width / 10, Screen.height /2 - 100, 200, 200);
 
     public int ContX;
-    int ContY = Screen.height - 300;
+    int ContY = Screen.height - 250;
 
 	string menuState;
 	string main = "main";

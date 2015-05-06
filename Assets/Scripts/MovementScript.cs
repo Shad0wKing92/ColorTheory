@@ -15,7 +15,7 @@ public class MovementScript : MonoBehaviour {
     [HideInInspector]public bool grabbing;
 	int count = 4;
 	[HideInInspector]public bool powerActive;
-	[HideInInspector]public bool grounded;
+	public bool grounded;
     [HideInInspector]public bool dead;
 
 	// Use this for initialization
@@ -36,7 +36,6 @@ public class MovementScript : MonoBehaviour {
         {
             if (!dead)
             {
-
                 //make player jump
                 if (Input.GetKeyDown(KMS.jump) || Input.GetKeyDown(KMS.KeyBoardjump))
                 {
@@ -88,9 +87,6 @@ public class MovementScript : MonoBehaviour {
 
                 }
 
-                //			if(!powerActive){
-                //				ResetVaules();
-                //			}
                 //move player right
                 if (Input.GetAxis("HorizontalJoy") >= 0.1 || Input.GetKey(KMS.right))
                 {
@@ -101,16 +97,40 @@ public class MovementScript : MonoBehaviour {
                 {
                     rigidbody2D.AddForce(-Vector2.right * speed);
                 }
-            }
-            if (Input.GetKeyDown(KMS.grab) || Input.GetKeyDown(KMS.KeyBoardgrab))
-            {
-                grabbing = true;
-
-                if (grabbed)
+                if (Input.GetKeyDown(KMS.grab) || Input.GetKeyDown(KMS.KeyBoardgrab))
                 {
-                    if (Input.GetKeyDown(KMS.grab) || Input.GetKeyDown(KMS.KeyBoardgrab))
+                    grabbing = true;
+
+                    if (grabbed)
                     {
-                        Release();
+                        if (Input.GetKeyDown(KMS.grab) || Input.GetKeyDown(KMS.KeyBoardgrab))
+                        {
+                            Release();
+                        }
+                    }
+                }
+
+                if (RMS.currentRift == RiftManagerScript.rifts.yellow)
+                {
+                    if (count == 4)
+                    {
+                        this.gameObject.layer = 12;
+                    }
+                    else if (count == 3)
+                    {
+                        this.gameObject.layer = 18;
+                    }
+                    else if (count == 2)
+                    {
+                        this.gameObject.layer = 19;
+                    }
+                    else if (count == 1)
+                    {
+                        this.gameObject.layer = 20;
+                    }
+                    else if (count == 0)
+                    {
+                        this.gameObject.layer = 21;
                     }
                 }
             }
