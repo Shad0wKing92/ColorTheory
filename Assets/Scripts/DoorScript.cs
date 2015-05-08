@@ -13,7 +13,7 @@ public class DoorScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {//if the button is active the collider on the door is active
+	void FixedUpdate () {//if the button is active the collider on the door is active
 		if (BS._active) {
 			this.gameObject.layer = 9;
 			this.collider2D.enabled = true;
@@ -34,9 +34,9 @@ public class DoorScript : MonoBehaviour {
                 GM.AddToLevel();
                 Application.LoadLevel(GM.CurrentLevel);
             }
-            else if (GM.CurrentLevel == 4)//returns to home screen.
+            else if (GM.CurrentLevel == 4)//Goes to win screen
             {
-                Application.LoadLevel(0);
+                Application.LoadLevel(6);
             }
 		}
 	}

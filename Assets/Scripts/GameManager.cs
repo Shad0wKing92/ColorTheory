@@ -73,6 +73,15 @@ public class GameManager : MonoBehaviour {
                 Application.LoadLevel(0);
             }
         }
+        if (Application.loadedLevel == 6) //if on Win screen
+        {
+            //shows game over GUI and home button
+            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 150, 150), ("Congratulations!"), style);
+            if (GUI.Button(new Rect(Screen.width / 2, (Screen.height / 2) - 150, 150, 150), "Main Menu"))
+            {
+                Application.LoadLevel(0);
+            }
+        }
 	}
 
     public void RemoveFromLives(){

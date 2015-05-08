@@ -1,0 +1,58 @@
+Initialize engine version: 4.5.3f3 (fca41a4fabea)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA Quadro K2000 (ID=0xffe)
+    Vendor:   NVIDIA
+    VRAM:     1973 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\AlphaBuild_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\AlphaBuild_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\AlphaBuild_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\AlphaBuild_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\AlphaBuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\AlphaBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\AlphaBuild_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\AlphaBuild_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\AlphaBuild_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\jacob.berry\Desktop\GitHub\ColorTheory\AlphaBuild_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+- Completed reload, in  0.085 seconds
+desktop: 1600x1200 60Hz; virtual: 3200x1200 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+UnloadTime: 1.007078 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 48 unused Assets to reduce memory usage. Loaded Objects now: 844.
+Total: 0.961742 ms (FindLiveObjects: 0.039062 ms CreateObjectMapping: 0.014256 ms MarkObjects: 0.140569 ms  DeleteObjects: 0.120895 ms)
+
+UnloadTime: 1.397136 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 66 unused Assets to reduce memory usage. Loaded Objects now: 619.
+Total: 1.681980 ms (FindLiveObjects: 0.021384 ms CreateObjectMapping: 0.015111 ms MarkObjects: 0.249773 ms  DeleteObjects: 0.437104 ms)
+
+UnloadTime: 1.411107 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 47 unused Assets to reduce memory usage. Loaded Objects now: 843.
+Total: 1.781776 ms (FindLiveObjects: 0.025091 ms CreateObjectMapping: 0.016252 ms MarkObjects: 0.280567 ms  DeleteObjects: 0.294254 ms)
+
+UnloadTime: 1.771226 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 65 unused Assets to reduce memory usage. Loaded Objects now: 1818.
+Total: 2.243116 ms (FindLiveObjects: 0.140283 ms CreateObjectMapping: 0.096088 ms MarkObjects: 0.531482 ms  DeleteObjects: 0.378367 ms)
+
+UnloadTime: 3.434959 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 134 unused Assets to reduce memory usage. Loaded Objects now: 3307.
+Total: 2.871542 ms (FindLiveObjects: 0.146271 ms CreateObjectMapping: 0.039062 ms MarkObjects: 0.663782 ms  DeleteObjects: 0.807202 ms)
+
+UnloadTime: 5.542924 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 73 unused Assets to reduce memory usage. Loaded Objects now: 2902.
+Total: 2.644294 ms (FindLiveObjects: 0.235802 ms CreateObjectMapping: 0.120609 ms MarkObjects: 0.644108 ms  DeleteObjects: 0.491563 ms)
+

@@ -6,6 +6,7 @@ public class FallingSpike : MonoBehaviour {
 	public GameObject Parent;
 	SoundManager SM;
     public bool CanFall;
+    public GameObject Particle;
 
 
 	// Use this for initialization
