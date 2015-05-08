@@ -14,12 +14,8 @@ public class FallingSpike : MonoBehaviour {
         //CanFall = false;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-	
-	void OnTriggerEnter2D(Collider2D other){
+	void OnTriggerEnter2D(Collider2D other){//when the spike is destroyed either on player contact or ground contact the spike is reset.
+        //I did trigger and not collider enter because in collider enter it slightly rotates the spike before destroying spike.
 		if (other.gameObject.tag == "Player") {
 			SM.SpikeHitting.Play();
 			Destroy(this.gameObject.rigidbody2D);

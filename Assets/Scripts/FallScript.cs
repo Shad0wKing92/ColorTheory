@@ -11,12 +11,7 @@ public class FallScript : MonoBehaviour {
 		SM = GameObject.FindGameObjectWithTag ("SoundManager").GetComponent<SoundManager> ();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-	void OnTriggerEnter2D(Collider2D other){
+	void OnTriggerEnter2D(Collider2D other){//if player enters trigger zone, spike will fall
 		if (other.gameObject.tag == "Player") {
 			SM.SpikeFalling.Play();
 			child.gameObject.AddComponent<Rigidbody2D>();

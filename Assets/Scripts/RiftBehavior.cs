@@ -11,7 +11,7 @@ public class RiftBehavior : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () {//changes the color of the object based on the the rift manager
 		if(RMS.currentRift == RiftManagerScript.rifts.normal)
 			this.gameObject.renderer.material.color = Color.gray;
 		if(RMS.currentRift == RiftManagerScript.rifts.red)
@@ -26,7 +26,8 @@ public class RiftBehavior : MonoBehaviour {
 			this.gameObject.renderer.material.color = Color.blue;
 		if(RMS.currentRift == RiftManagerScript.rifts.purple)
 			this.gameObject.renderer.material.color = Color.magenta;
-		
+		//this is for the camera scripts
+        //changes the layer of the player
 		if(this.gameObject.tag == "Player"){
 			if (RMS.currentRift == RiftManagerScript.rifts.red) {
 				this.gameObject.layer = 11;
@@ -38,7 +39,7 @@ public class RiftBehavior : MonoBehaviour {
 				this.gameObject.layer = 13;
 			}
 		}
-
+        //changes the layer of the background stuff
 		if(this.gameObject.tag == "Cube"){
 			if (RMS.currentRift == RiftManagerScript.rifts.red) {
 				this.gameObject.layer = 14;

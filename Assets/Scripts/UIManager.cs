@@ -9,9 +9,14 @@ public class UIManager : MonoBehaviour {
     Rect windowRect = new Rect(Screen.width / 10, Screen.height /2 - 100, 200, 200);
 
     public int ContX;
-    int ContY = Screen.height - 250;
+    
 
-	string menuState;
+    int sizeX = Screen.width / 4;
+    int sizeY = Screen.height / 4;
+
+    int ContY = Screen.height - (Screen.height / 4);
+	
+    string menuState;
 	string main = "main";
     string levelSelect = "level select";
 	string options = "options";
@@ -29,22 +34,16 @@ public class UIManager : MonoBehaviour {
 		}
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        //if (menuState == credits && Input.GetKeyDown (KeyCode.Joystick1Button6))
-        //    menuState = main;
-	}
-
 	void OnGUI(){
 		if (background != null) {
 			GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), background);
 		}
 		if (logo != null) {
-			GUI.DrawTexture(new Rect(30, 30, 450, 300), logo);
+            GUI.DrawTexture(new Rect(ContX, ContX, sizeX, sizeY), logo);
 		}
         if (Controller != null)
         {
-            GUI.DrawTexture(new Rect(ContX, ContY, 450, 300), Controller);
+            GUI.DrawTexture(new Rect(ContX, ContY, sizeX, sizeY), Controller);
         }
 
 		GUI.skin = myGUISkin;
@@ -57,7 +56,6 @@ public class UIManager : MonoBehaviour {
 		}
 		if (menuState == credits) {
             windowRect = GUI.Window(3, windowRect, CreditsFunc, "Credits");
-            //GUI.Box(new Rect(0,0,Screen.width,Screen.height), textToDisplay);
 		}
         if (menuState == levelSelect)
         {
@@ -120,7 +118,6 @@ public class UIManager : MonoBehaviour {
     {
         GUILayout.Box("Credits");
         GUILayout.Label(textToDisplay);
-        //GUI.Label(windowRect, textToDisplay);
         if (GUILayout.Button("Back"))
         {
             menuState = main;

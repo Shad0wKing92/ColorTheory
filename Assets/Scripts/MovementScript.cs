@@ -54,19 +54,21 @@ public class MovementScript : MonoBehaviour {
                         }
                     }
                 }
+                //what controls the powers
                 if (Input.GetKeyDown(KMS.power) || Input.GetKeyDown(KMS.KeyBoardpower) || Input.GetKeyDown(KMS.power2))
                 {
+                    //dependant of the color of the player is dependant on the method/power that is used.
                     if (RMS.currentRift == RiftManagerScript.rifts.yellow)
                     {
                         MultiJump();
                     }
                     if (RMS.currentRift == RiftManagerScript.rifts.blue)
                     {
-                        //powerActive = true;
                         if (!powerActive)
                         {
                             SlowWorld();
                         }
+                        //after the power deactivates the players base values get reset
                         else if (powerActive)
                         {
                             ResetVaules();
@@ -74,7 +76,6 @@ public class MovementScript : MonoBehaviour {
                     }
                     if (RMS.currentRift == RiftManagerScript.rifts.red)
                     {
-                        //powerActive = true;
                         if (!powerActive)
                         {
                             GravitySwitch();
@@ -97,6 +98,9 @@ public class MovementScript : MonoBehaviour {
                 {
                     rigidbody2D.AddForce(-Vector2.right * speed);
                 }
+                //controls the grabbed function
+                //FYI I have no idea how this works anymore, I got it working right through some sort of black magic and I think I had to sacrifice a goat at some point.
+                //Seriously there are multiple grab bools and I am afraid to remove one because I am not sure it if is nessassary or not anymore.
                 if (Input.GetKeyDown(KMS.grab) || Input.GetKeyDown(KMS.KeyBoardgrab))
                 {
                     grabbing = true;
@@ -109,7 +113,7 @@ public class MovementScript : MonoBehaviour {
                         }
                     }
                 }
-
+                //This controls what color the player is when using the yellow power, simulating power being used.
                 if (RMS.currentRift == RiftManagerScript.rifts.yellow)
                 {
                     if (count == 4)
@@ -138,27 +142,29 @@ public class MovementScript : MonoBehaviour {
     }
 
 
+    
     void OnCollisionEnter2D(Collision2D other)
-    {
+    {//resets the count for the yellow power on collision enter to the ground
         if (other.gameObject.tag == "Ground")
         {
             ResetCount();
         }
     }
     void OnCollisionExit2D(Collision2D other)
-    {
+    {//controls if the player can jump, if the player is not on the ground they can not jump.
         if (other.gameObject.tag == "Ground")
         {
             grounded = false;
         }
     }
 
-	//make player grab cubes or whatever
+	
 	void OnCollisionStay2D(Collision2D other){
+        //if the player is on the ground they can jump.
 		if (other.gameObject.tag == "Ground") {
 			grounded = true;
 		}
-
+        //this also is included with the grab function.
 		if(grabbing){
 			if (other.gameObject.tag == "Grabbable") {			
 				other.transform.parent = this.transform;
@@ -171,17 +177,19 @@ public class MovementScript : MonoBehaviour {
 		}
 
 	void AddRigidbody(){
-//		if(!grabbable == null){
-			if (grabbable.tag == "Grabbable") {
-				if(grabbable.gameObject.rigidbody2D == null){
-					grabbable.gameObject.AddComponent<Rigidbody2D>();
-					grabbable.transform.parent = null;
-				}
+        //if the interactable ball is dropped or let go it adds a rigidbody and unattactes itself from the player.
+		if (grabbable.tag == "Grabbable") {
+			if(grabbable.gameObject.rigidbody2D == null){
+				grabbable.gameObject.AddComponent<Rigidbody2D>();
+				grabbable.transform.parent = null;
 			}
+		}
 //		}
 	}
-	//Color Yellow Power
-	void MultiJump(){
+
+    void MultiJump()
+    {//Color Yellow Power
+        //this will give the player an extra jump, each time they extra jump it will be weaker than the last one.
 		if(count == 4){
 			rigidbody2D.AddForce(Vector2.up * (0.8f * force));
 			count--;
@@ -207,6 +215,7 @@ public class MovementScript : MonoBehaviour {
 	}
 
 	IEnumerator PowerSpeed(float time){
+        //for the coroutine, the bell will play right before the power deactivates.
 		yield return new WaitForSeconds (time - 0.5f);
         SM.Bell.Play();
         yield return new WaitForSeconds(0.5f);
@@ -214,7 +223,7 @@ public class MovementScript : MonoBehaviour {
 		ResetVaules ();
 	}
 	//Color Blue Power
-	void SlowWorld(){
+	void SlowWorld(){//slows down time of the world but increases the speed of the player
 		if(Time.timeScale != 0){
 			//if (powerActive) {
 			powerActive = true;
@@ -226,7 +235,7 @@ public class MovementScript : MonoBehaviour {
 		}
 	}
 
-	void GravitySwitch(){
+	void GravitySwitch(){//inverts the gravity of the player
 		//if (powerActive) {
 		powerActive = true;
 		SM.RedPower.Play();
@@ -249,7 +258,7 @@ public class MovementScript : MonoBehaviour {
 	}
 
     public void Release()
-    {
+    {//function to call the function AddRigidbody.
         if (grabbed)
         {
             AddRigidbody();

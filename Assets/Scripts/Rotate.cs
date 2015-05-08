@@ -7,13 +7,8 @@ public class Rotate : MonoBehaviour {
 	public enum Rotation{None, Forward, Backward, Up, Down, Right, Left}
 	public Rotation CurrentRotate;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    
+	void Update () {//rotation stuff for the background things
 		if(CurrentRotate == Rotation.Forward)
 			this.gameObject.transform.Rotate (Vector3.forward * Time.deltaTime * RotateSpeed);
 		else if(CurrentRotate == Rotation.Backward)

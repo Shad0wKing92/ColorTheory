@@ -17,40 +17,14 @@ public class ZoneChange : MonoBehaviour {
         MS = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		//fix, it works but not in the right way
-
-//		if(currentRift == rifts.knew){
-//			if(RMS.currentRift == RiftManagerScript.rifts.knew){
-//				this.gameObject.renderer.enabled = false;
-//				this.gameObject.collider.enabled = false;
-//			}
-//			else{
-//				this.gameObject.renderer.enabled = true;
-//				this.gameObject.collider.enabled = true;
-//			}
-//		}
-//
-//		if(currentRift == rifts.old){
-//			if(RMS.currentRift == RiftManagerScript.rifts.old){
-//				this.gameObject.renderer.enabled = false;
-//				this.gameObject.collider.enabled = false;
-//			}else{
-//				this.gameObject.renderer.enabled = true;
-//				this.gameObject.collider.enabled = true;
-//			}
-//		}	
-	}
-
-	void OnTriggerEnter2D(Collider2D other){
+	void OnTriggerEnter2D(Collider2D other){//changes the world rift
 		if (other.gameObject.tag == "Player") {
 			SM.RiftSwitch.Play();
             if (RMS.currentRift == RiftManagerScript.rifts.red)
             {
-                if (MS.powerActive == true)
+                if (MS.powerActive == true)//checks to make sure the power is not active
                 {
-                    MS.powerActive = false;
+                    MS.powerActive = false;//if it is it deactivates
                     MS.rigidbody2D.gravityScale = 1;
                 }
                 RMS.currentRift = RiftManagerScript.rifts.yellow;

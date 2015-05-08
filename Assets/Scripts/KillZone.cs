@@ -9,7 +9,6 @@ public class KillZone : MonoBehaviour {
 	SoundManager SM;
     MovementScript MS;
 
-	// Use this for initialization
 	void Start () {
         RS = GameObject.FindGameObjectWithTag("GRespawner").GetComponent<RespawnScript>();
         PRS = GameObject.FindGameObjectWithTag("Respawner").GetComponent<RespawnScript>();
@@ -18,20 +17,15 @@ public class KillZone : MonoBehaviour {
         MS = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementScript>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	void OnCollisionEnter2D(Collision2D other){
-        if (other.gameObject.tag == "Grabbable")
+        if (other.gameObject.tag == "Grabbable")//if the grabbable hits the killzone it will be destroyed.
         {
             SM.GrabbableDeath.Play();
             Instantiate(RS.DeathParticle, other.transform.position, other.transform.rotation);
             RS.GrabbableInFeild = false;
             Destroy(other.gameObject);
         }
-		if(other.gameObject.tag == "Player"){
+		if(other.gameObject.tag == "Player"){//if player hits killzone they will be destroyed.
 			SM.PlayerDeath.Play();
             if (MS.grabbed)
             {
@@ -43,7 +37,7 @@ public class KillZone : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		if (other.gameObject.tag == "Player") {
+		if (other.gameObject.tag == "Player") {//if the player is holding the grabbable and is destroyed they will drop it
 			SM.PlayerDeath.Play();
             if (MS.grabbed)
             {
@@ -59,12 +53,12 @@ public class KillZone : MonoBehaviour {
 	}
 
     IEnumerator WaitTime(float time, GameObject other)
-    {
-        other.renderer.enabled = false;
-        other.collider2D.enabled = false;
-        other.rigidbody2D.gravityScale = 0;
-        Instantiate(RS.DeathParticle, other.transform.position, other.transform.rotation);
-        MS.dead = true;
+    {//coroutine for death makes sure you can't:
+        other.renderer.enabled = false; //see the player,
+        other.collider2D.enabled = false; //interact with the player,
+        other.rigidbody2D.gravityScale = 0; //that the player doesnt fall off the map.
+        Instantiate(RS.DeathParticle, other.transform.position, other.transform.rotation); //particle effect
+        MS.dead = true; //move the player,
         yield return new WaitForSeconds(time);
         PRS.MoveObject(other.gameObject);
         other.renderer.enabled = true;

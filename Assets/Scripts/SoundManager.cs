@@ -15,6 +15,8 @@ public class SoundManager : MonoBehaviour {
 	public AudioSource GrabbableDeath;
 	public AudioSource Door;
 
+    //this script holds the sounds. in the inspector the soundManager will hold all of the sources and then each one is dragged into the public source.
+    //when the sound needs to be played the script in the exact moment it happens calls the Sound manager to play the sound it wants.
 
 	static private SoundManager instance;
 	
@@ -30,10 +32,5 @@ public class SoundManager : MonoBehaviour {
 		}
 		
 		DontDestroyOnLoad (gameObject);
-	}
-
-	// Use this for initialization
-	void Start () {
-
 	}
 }

@@ -7,18 +7,12 @@ public class ButtonScript : MonoBehaviour {
 
 	SoundManager SM;
 
-	// Use this for initialization
 	void Start () {
 		SM = GameObject.FindGameObjectWithTag ("SoundManager").GetComponent<SoundManager> ();
 		_active = false;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-
-	}
-
-	void OnCollisionEnter2D(Collision2D other){
+	void OnCollisionEnter2D(Collision2D other){//if the ball is in the ring the player can go through the door.
 		if(other.gameObject.tag == ("Grabbable")){
 			_active = true;
 			SM.Door.Play();
