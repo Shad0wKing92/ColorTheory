@@ -14,14 +14,4 @@ public class KeyManagerScript : MonoBehaviour {
     public KeyCode KeyBoardjump;
     public KeyCode KeyBoardgrab;
     public KeyCode KeyBoardpower;
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

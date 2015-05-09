@@ -8,7 +8,7 @@ public class Rotate : MonoBehaviour {
 	public Rotation CurrentRotate;
 
     
-	void Update () {//rotation stuff for the background things
+	void FixedUpdate () {//rotation stuff for the background things
 		if(CurrentRotate == Rotation.Forward)
 			this.gameObject.transform.Rotate (Vector3.forward * Time.deltaTime * RotateSpeed);
 		else if(CurrentRotate == Rotation.Backward)

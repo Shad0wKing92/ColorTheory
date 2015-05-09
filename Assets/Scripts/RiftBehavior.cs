@@ -11,7 +11,7 @@ public class RiftBehavior : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {//changes the color of the object based on the the rift manager
+	void FixedUpdate () {//changes the color of the object based on the the rift manager
 		if(RMS.currentRift == RiftManagerScript.rifts.normal)
 			this.gameObject.renderer.material.color = Color.gray;
 		if(RMS.currentRift == RiftManagerScript.rifts.red)

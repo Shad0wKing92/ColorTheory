@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
     #endregion
 	
 	
-	void Update ()
+	void FixedUpdate ()
     {
         //sets variable to the loaded level.
         CurrentLevel = Application.loadedLevel;

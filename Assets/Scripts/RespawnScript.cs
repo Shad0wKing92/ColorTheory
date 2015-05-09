@@ -19,7 +19,7 @@ public class RespawnScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {//if the grabbable is destroyed it will spawn a new one
+	void FixedUpdate () {//if the grabbable is destroyed it will spawn a new one
         if (!GrabbableInFeild && spawnerType == spawner.grabbable)
         {
             Instantiate(grabbable, this.transform.position, this.transform.rotation);

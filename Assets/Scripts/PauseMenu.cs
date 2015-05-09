@@ -11,9 +11,12 @@ public class PauseMenu : MonoBehaviour {
         {
             if (Application.loadedLevel != 5)
             {
-                if (Input.GetKeyDown(pause))
+                if (Application.loadedLevel != 6)
                 {
-                    paused = togglePause();
+                    if (Input.GetKeyDown(pause))
+                    {
+                        paused = togglePause();
+                    }
                 }
             }
         }

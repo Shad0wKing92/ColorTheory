@@ -43,7 +43,6 @@ public class ZoneChange : MonoBehaviour {
                     Time.timeScale = 1;
                 }
                 RMS.currentRift = RiftManagerScript.rifts.red;
-                
             }
 		}
 	}
